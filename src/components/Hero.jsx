@@ -18,8 +18,7 @@ const Hero = () => {
             className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-tight mb-0 justify-center"
             animateBy="words"
           />
-          <br />
-          <span className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 mt-0">
+          <span className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 -mt-10">
             Innovate.
           </span>
 
