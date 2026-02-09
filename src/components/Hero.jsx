@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import BlurText from './BlurText';
 
 const Hero = () => {
   return (
@@ -12,12 +13,15 @@ const Hero = () => {
           className="space-y-6"
         >
 
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-tight">
-            Design. Build.<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600">
-              Innovate.
-            </span>
-          </h1>
+          <BlurText
+            text="Design. Build."
+            className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-tight mb-0 justify-center"
+            animateBy="words"
+          />
+          <br />
+          <span className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 mt-0">
+            Innovate.
+          </span>
 
           <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
             I'm <span className="text-white font-semibold">ABI BINU</span>, a Full-Stack Developer
