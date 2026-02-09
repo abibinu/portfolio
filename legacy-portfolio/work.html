@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABI Portfolio - Work</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Entrance Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease forwards;
+    }
+    .fade-in-delay-1 {
+      animation-delay: 0.3s;
+    }
+    .fade-in-delay-2 {
+      animation-delay: 0.6s;
+    }
+    .fade-in-delay-3 {
+      animation-delay: 0.9s;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #f5f7ff;
+      color: #222;
+    }
+
+    /* Navbar */
+    header {
+      width: 100%;
+      padding: 20px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 12px 15px;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-toggle span {
+      width: 30px;
+      height: 2px;
+      background-color: #222;
+      transition: 0.3s;
+      border-radius: 2px;
+    }
+
+    header h2 {
+      font-weight: 700;
+      font-size: 2rem;
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-variant: normal;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #222;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #2f6bff;
+      border-bottom: 2px solid #2f6bff;
+      padding-bottom: 3px;
+    }
+
+    /* Work Section */
+    .work-container {
+      padding: 50px 10%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      color: #222;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 200px;
+      background: #f5f5f5;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover .project-image img {
+      transform: scale(1.05);
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .project-title {
+      color: #222;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-description {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      background: #f0f0f0;
+      padding: 0.25rem 0.75rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      color: #2f6bff;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .project-links a {
+      text-decoration: none;
+      color: #2f6bff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+
+    .project-links a:hover {
+      color: #1d4ed8;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 5%;
+      }
+      
+      header h2 {
+        font-size: 1.5rem;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 70%;
+        max-width: 300px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 80px 20px;
+        transition: 0.3s ease-in-out;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+      }
+
+      nav.active {
+        right: 0;
+      }
+
+      nav.active::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+      }
+
+      nav ul li {
+        width: 100%;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        margin: 5px 0;
+      }
+
+      nav ul li a {
+        display: block;
+        padding: 15px;
+        font-size: 1.1rem;
+        color: #222;
+        font-weight: bold;
+      }
+
+      nav ul li a:hover,
+      nav ul li a.active {
+        background: #2f6bff;
+        color: white;
+        border-radius: 8px;
+        border-bottom: none;
+      }
+
+      .nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="cursor-bg" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:-1;"></canvas>
+
+  <!-- Navbar -->
+  <header>
+    <h2 class="fade-in">ABI BINU</h2>
+    <div class="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="fade-in fade-in-delay-1">Home</a></li>
+        <li><a href="about.html" class="fade-in fade-in-delay-2">About</a></li>
+        <li><a href="skills.html" class="fade-in fade-in-delay-3">Skills</a></li>
+        <li><a href="work.html" class="active fade-in fade-in-delay-1">Work</a></li>
+        <li><a href="contact.html" class="fade-in fade-in-delay-2">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Work Section -->
+  <section class="work-container">
+    <h1 class="section-title fade-in">My Projects</h1>
+    
+    <div class="projects-grid">
+      <!-- Project 1 -->
+      <div class="project-card fade-in fade-in-delay-1">
+        <div class="project-image">
+          <img src="assets/projects/ecommerce.jpg" alt="E-Commerce Platform Screenshot">
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">E-Commerce Platform</h3>
+          <p class="project-description">A full-stack e-commerce platform with user authentication, product management, etc.</p>
+          <div class="project-tags">
+            <span class="tag">Php</span>
+            <span class="tag">Html</span>
+            <span class="tag">MongoDB</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/abibinu/E-COMMERCE_SITE" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card fade-in fade-in-delay-2">
+        <div class="project-image">
+          <img src="assets/projects/mental-health-app.jpg" alt="Mental Health App Screenshot">
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">Mental Health Companion App</h3>
+          <p class="project-description">A mental health app with user authentication, chat functionality, etc.</p>
+          <div class="project-tags">
+            <span class="tag">Flutter</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">PostgreSQL</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/abibinu/MENTAL_HEALTH_APP" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card fade-in fade-in-delay-3">
+        <div class="project-image">
+          <img src="assets/projects/ml-disease.jpg" alt="ML Disease Prediction Interface">
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">ML Disease Prediction</h3>
+          <p class="project-description">A machine learning model that predicts diseases based on symptoms.</p>
+          <div class="project-tags">
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Python</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/abibinu/ML_projects" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project-card fade-in fade-in-delay-3">
+        <div class="project-image">
+          <img src="assets/projects/trading-bot.png" alt="Trading Bot Dashboard">
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">Personal Trading Bot</h3>
+          <p class="project-description">A trading bot that uses machine learning to analyze market trends, make predictions and place trades.</p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Trading API</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/abibinu/arbix" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    // Cursor animation effect
+    const canvas = document.getElementById('cursor-bg');
+    const ctx = canvas.getContext('2d');
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    let circles = [];
+    document.addEventListener('mousemove', function(e) {
+      circles.push({
+        x: e.clientX,
+        y: e.clientY,
+        r: 0,
+        alpha: 0.5,
+        color: `rgba(47,107,255,0.3)`
+      });
+    });
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < circles.length; i++) {
+        let c = circles[i];
+        ctx.beginPath();
+        ctx.arc(c.x, c.y, c.r, 0, 2 * Math.PI);
+        ctx.fillStyle = c.color;
+        ctx.globalAlpha = c.alpha;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+        c.r += 1.5;
+        c.alpha -= 0.01;
+        if (c.alpha <= 0) circles.splice(i, 1), i--;
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+
+  <script>
+    // Mobile menu handling
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('nav');
+
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('active');
+      nav.classList.toggle('active');
+    });
+
+    // Close menu when clicking a link
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('active');
+        nav.classList.remove('active');
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!nav.contains(e.target) && !navToggle.contains(e.target) && nav.classList.contains('active')) {
+        navToggle.classList.remove('active');
+        nav.classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>
