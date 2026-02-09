@@ -1,7 +1,5 @@
-import React, { Suspense, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, MeshDistortMaterial, Icosahedron } from '@react-three/drei';
+import React, { useRef } from 'react';
+import { motion } from 'framer-motion';
 
 const TechShape = ({ scrollYProgress }) => {
   const meshRef = useRef();
@@ -43,10 +41,6 @@ const techStack = [
 
 const Skills = () => {
   const sectionRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
 
   return (
     <section id="skills" ref={sectionRef} className="py-12 overflow-hidden bg-black relative">
@@ -69,15 +63,7 @@ const Skills = () => {
             The Secret Sauce
           </motion.h3>
 
-          <div className="w-full md:w-64 h-64 relative">
-             <Canvas camera={{ position: [0, 0, 3] }} dpr={[1, 2]}>
-                <Suspense fallback={null}>
-                   <ambientLight intensity={0.5} />
-                   <pointLight position={[10, 10, 10]} intensity={1} />
-                   <TechShape scrollYProgress={scrollYProgress} />
-                </Suspense>
-             </Canvas>
-          </div>
+
         </div>
       </div>
 
