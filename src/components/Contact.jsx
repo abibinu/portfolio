@@ -48,7 +48,7 @@ const Contact = () => {
       } else {
         throw new Error('Failed');
       }
-    } catch (error) {
+    } catch (_error) {
       setStatus('error');
       setTimeout(() => setStatus('idle'), 5000);
     }

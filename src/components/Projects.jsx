@@ -42,7 +42,7 @@ const projects = [
   }
 ];
 
-const ProjectCard = ({ project, index }) => {
+const ProjectCard = ({ project, index: _index }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}

@@ -1,5 +1,7 @@
 import React, { useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useTransform } from 'framer-motion';
+import { useFrame } from '@react-three/fiber';
+import { Float, Icosahedron, MeshDistortMaterial } from '@react-three/drei';
 import BlurText from './BlurText';
 
 const TechShape = ({ scrollYProgress }) => {
