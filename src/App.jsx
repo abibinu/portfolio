@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
-import Skills from './components/Skills';
-import Certificates from './components/Certificates';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
 import Background from './components/Background';
+
+const About = lazy(() => import('./components/About'));
+const Skills = lazy(() => import('./components/Skills'));
+const Certificates = lazy(() => import('./components/Certificates'));
+const Projects = lazy(() => import('./components/Projects'));
+const Contact = lazy(() => import('./components/Contact'));
 
 function App() {
   return (
@@ -15,11 +16,21 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        <About />
-        <Skills />
-        <Certificates />
-        <Projects />
-        <Contact />
+        <Suspense fallback={<div className="h-96" />}>
+          <About />
+        </Suspense>
+        <Suspense fallback={<div className="h-96" />}>
+          <Skills />
+        </Suspense>
+        <Suspense fallback={<div className="h-96" />}>
+          <Certificates />
+        </Suspense>
+        <Suspense fallback={<div className="h-96" />}>
+          <Projects />
+        </Suspense>
+        <Suspense fallback={<div className="h-96" />}>
+          <Contact />
+        </Suspense>
       </main>
     </div>
   );
