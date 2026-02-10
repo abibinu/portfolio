@@ -1,37 +1,6 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
-
-const TechShape = ({ scrollYProgress }) => {
-  const meshRef = useRef();
-
-  const rotationZ = useTransform(scrollYProgress, [0, 1], [0, Math.PI]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.5, 1.2, 0.8]);
-
-  useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x = state.clock.getElapsedTime() * 0.2;
-      meshRef.current.rotation.y = state.clock.getElapsedTime() * 0.3;
-      meshRef.current.rotation.z = rotationZ.get();
-      const s = scale.get();
-      meshRef.current.scale.set(s, s, s);
-    }
-  });
-
-  return (
-    <Float speed={4} rotationIntensity={1} floatIntensity={2}>
-      <Icosahedron ref={meshRef} args={[1, 15]} scale={1}>
-        <MeshDistortMaterial
-          color="#8b5cf6"
-          attach="material"
-          distort={0.3}
-          speed={2}
-          roughness={0.1}
-          metalness={1}
-        />
-      </Icosahedron>
-    </Float>
-  );
-};
+import BlurText from './BlurText';
 
 const techStack = [
   "React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "Express.js",
@@ -54,16 +23,12 @@ const Skills = () => {
           My Skills
         </motion.h2>
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
-          <motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <BlurText
+            text="The Secret Sauce"
             className="text-4xl md:text-6xl font-bold"
-          >
-            The Secret Sauce
-          </motion.h3>
-
-
+            tag="h3"
+            animateBy="words"
+          />
         </div>
       </div>
 

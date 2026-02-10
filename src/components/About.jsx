@@ -1,6 +1,7 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import { Globe, Cpu, Users, Zap } from 'lucide-react';
+import BlurText from './BlurText';
 
 const About = () => {
   const bentoItems = [
@@ -38,27 +39,25 @@ const About = () => {
     <section id="about" className="py-32 px-4 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="mb-20">
-          <motion.h2
+          <Motion.h2
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="text-gray-500 uppercase tracking-widest text-sm font-bold mb-4"
           >
             Know About Me
-          </motion.h2>
-          <motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          </Motion.h2>
+          <BlurText
+            text="Full-Stack Developer and a little bit of everything."
             className="text-4xl md:text-6xl font-bold max-w-3xl leading-tight"
-          >
-            Full-Stack Developer and a little bit of everything.
-          </motion.h3>
+            tag="h3"
+            animateBy="words"
+          />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {bentoItems.map((item, index) => (
-            <motion.div
+            <Motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -73,10 +72,10 @@ const About = () => {
               <p className="text-gray-400 leading-relaxed">
                 {item.description}
               </p>
-            </motion.div>
+            </Motion.div>
           ))}
 
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -97,7 +96,7 @@ const About = () => {
             {/* Decorative circles */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-32 -mt-32" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/10 rounded-full blur-3xl -ml-32 -mb-32" />
-          </motion.div>
+          </Motion.div>
         </div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Loader2, Mail, MapPin, Github, Linkedin } from 'lucide-react';
+import BlurText from './BlurText';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -48,7 +49,7 @@ const Contact = () => {
       } else {
         throw new Error('Failed');
       }
-    } catch (error) {
+    } catch {
       setStatus('error');
       setTimeout(() => setStatus('idle'), 5000);
     }
@@ -69,15 +70,12 @@ const Contact = () => {
               >
                 Contact
               </motion.h2>
-              <motion.h3
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-6xl md:text-8xl font-bold tracking-tighter"
-              >
-                Let's make it<br />
-                <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">happen.</span>
-              </motion.h3>
+              <BlurText
+                text="Let's make it happen."
+                className="text-6xl md:text-8xl font-bold tracking-tighter bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent"
+                tag="h3"
+                animateBy="words"
+              />
             </div>
 
             <div className="space-y-6">
@@ -146,6 +144,18 @@ const Contact = () => {
                     className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 outline-none focus:border-blue-500/50 focus:bg-white/[0.08] transition-all duration-300 placeholder:text-gray-700"
                   />
                 </div>
+              </div>
+              <div className="space-y-3">
+                <label className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] ml-2">Subject</label>
+                <input
+                  type="text"
+                  name="subject"
+                  required
+                  value={formData.subject}
+                  onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                  placeholder="How can I help you?"
+                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 outline-none focus:border-blue-500/50 focus:bg-white/[0.08] transition-all duration-300 placeholder:text-gray-700"
+                />
               </div>
               <div className="space-y-3">
                 <label className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] ml-2">Message</label>

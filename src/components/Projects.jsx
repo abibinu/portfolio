@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, ExternalLink, ArrowUpRight } from 'lucide-react';
+import BlurText from './BlurText';
 
 const projects = [
   {
@@ -41,7 +42,7 @@ const projects = [
   }
 ];
 
-const ProjectCard = ({ project, index }) => {
+const ProjectCard = ({ project }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -115,19 +116,17 @@ const Projects = () => {
           >
             Case Studies
           </motion.h2>
-          <motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <BlurText
+            text="Curated Work"
             className="text-4xl md:text-6xl font-bold"
-          >
-            Curated Work
-          </motion.h3>
+            tag="h3"
+            animateBy="words"
+          />
         </div>
 
         <div>
-          {projects.map((project, index) => (
-            <ProjectCard key={project.title} project={project} index={index} />
+          {projects.map((project) => (
+            <ProjectCard key={project.title} project={project} />
           ))}
         </div>
       </div>

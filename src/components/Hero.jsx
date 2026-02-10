@@ -1,10 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import BlurText from './BlurText';
+import DarkVeil from './DarkVeil';
 
 const Hero = () => {
   return (
     <section id="home" className="relative min-h-[120vh] flex flex-col items-center justify-center pt-3 px-4 overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <DarkVeil
+          hueShift={210}
+          speed={0.3}
+          noiseIntensity={0.05}
+          scanlineIntensity={0.2}
+          warpAmount={0.1}
+        />
+      </div>
       <div className="relative z-10 max-w-7xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -17,10 +27,15 @@ const Hero = () => {
             text="Design. Build."
             className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-tight mb-0 justify-center"
             animateBy="words"
+            tag="h1"
           />
-          <span className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 -mt-10">
-            Innovate.
-          </span>
+          <BlurText
+            text="Innovate."
+            className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 -mt-10 justify-center"
+            animateBy="words"
+            tag="h1"
+            delay={400}
+          />
 
           <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
             I'm <span className="text-white font-semibold">ABI BINU</span>, a Full-Stack Developer
