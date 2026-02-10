@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, ExternalLink, ArrowUpRight } from 'lucide-react';
+import BlurText from './BlurText';
 
 const projects = [
   {
@@ -115,14 +116,11 @@ const Projects = () => {
           >
             Case Studies
           </motion.h2>
-          <motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <BlurText
+            text="Curated Work"
+            tag="h3"
             className="text-4xl md:text-6xl font-bold"
-          >
-            Curated Work
-          </motion.h3>
+          />
         </div>
 
         <div>

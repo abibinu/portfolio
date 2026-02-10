@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
+import BlurText from './BlurText';
 
 const TechShape = ({ scrollYProgress }) => {
   const meshRef = useRef();
@@ -54,14 +55,11 @@ const Skills = () => {
           My Skills
         </motion.h2>
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
-          <motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <BlurText
+            text="The Secret Sauce"
+            tag="h3"
             className="text-4xl md:text-6xl font-bold"
-          >
-            The Secret Sauce
-          </motion.h3>
+          />
 
 
         </div>

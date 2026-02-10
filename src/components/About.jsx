@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Globe, Cpu, Users, Zap } from 'lucide-react';
+import BlurText from './BlurText';
 
 const About = () => {
   const bentoItems = [
@@ -46,14 +47,11 @@ const About = () => {
           >
             Know About Me
           </motion.h2>
-          <motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <BlurText
+            text="Full-Stack Developer and a little bit of everything."
+            tag="h3"
             className="text-4xl md:text-6xl font-bold max-w-3xl leading-tight"
-          >
-            Full-Stack Developer and a little bit of everything.
-          </motion.h3>
+          />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
