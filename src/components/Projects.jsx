@@ -42,7 +42,7 @@ const projects = [
   }
 ];
 
-const ProjectCard = ({ project, index: _index }) => {
+const ProjectCard = ({ project }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -124,8 +124,8 @@ const Projects = () => {
         </div>
 
         <div>
-          {projects.map((project, index) => (
-            <ProjectCard key={project.title} project={project} index={index} />
+          {projects.map((project) => (
+            <ProjectCard key={project.title} project={project} />
           ))}
         </div>
       </div>

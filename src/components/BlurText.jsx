@@ -24,7 +24,6 @@ const BlurText = ({
   easing = t => t,
   onAnimationComplete,
   stepDuration = 0.35,
-  wordClasses: _wordClasses = [],
   tag = 'p'
 }) => {
   const Tag = tag;
