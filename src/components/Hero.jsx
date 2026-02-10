@@ -1,10 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import BlurText from './BlurText';
+import DarkVeil from './DarkVeil';
 
 const Hero = () => {
   return (
     <section id="home" className="relative min-h-[120vh] flex flex-col items-center justify-center pt-3 px-4 overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <DarkVeil
+          hueShift={0}
+          resolutionScale={1}
+          speed={1}
+        />
+      </div>
       <div className="relative z-10 max-w-7xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

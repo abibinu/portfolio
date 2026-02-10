@@ -1,5 +1,4 @@
 import { chromium } from 'playwright';
-import path from 'path';
 
 async function check_site() {
     const browser = await chromium.launch();
