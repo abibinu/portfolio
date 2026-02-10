@@ -39,7 +39,7 @@ const CertificateCard = ({ cert, index }) => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: "-100px" }}
       transition={{ delay: index * 0.1 }}
       className="group relative bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:border-white/20 transition-all duration-500"
     >
@@ -49,6 +49,8 @@ const CertificateCard = ({ cert, index }) => {
         <img
           src={cert.image}
           alt={cert.title}
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
         />
         <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500" />

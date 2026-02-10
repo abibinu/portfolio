@@ -70,12 +70,15 @@ const Contact = () => {
               >
                 Contact
               </motion.h2>
-              <BlurText
-                text="Let's make it happen."
+              <motion.h3
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
                 className="text-6xl md:text-8xl font-bold tracking-tighter bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent"
-                tag="h3"
-                animateBy="words"
-              />
+              >
+                Let's make it happen.
+              </motion.h3>
             </div>
 
             <div className="space-y-6">

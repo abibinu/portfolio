@@ -8,7 +8,7 @@ const Hero = () => {
     <section id="home" className="relative min-h-[120vh] flex flex-col items-center justify-center pt-3 px-4 overflow-hidden">
       <div className="absolute inset-0 z-0">
         <DarkVeil
-          hueShift={210}
+          hueShift={280}
           speed={0.3}
           noiseIntensity={0.05}
           scanlineIntensity={0.2}
@@ -29,13 +29,14 @@ const Hero = () => {
             animateBy="words"
             tag="h1"
           />
-          <BlurText
-            text="Innovate."
-            className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 -mt-10 justify-center"
-            animateBy="words"
-            tag="h1"
-            delay={400}
-          />
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 -mt-10"
+          >
+            Innovate.
+          </motion.h2>
 
           <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
             I'm <span className="text-white font-semibold">ABI BINU</span>, a Full-Stack Developer

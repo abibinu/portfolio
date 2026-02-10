@@ -81,7 +81,7 @@ export default function DarkVeil({
   speed = 0.5,
   scanlineFrequency = 0,
   warpAmount = 0,
-  resolutionScale = 1
+  resolutionScale = 0.75
 }) {
   const ref = useRef(null);
   useEffect(() => {
@@ -91,7 +91,8 @@ export default function DarkVeil({
 
     const renderer = new Renderer({
       dpr: Math.min(window.devicePixelRatio, 2),
-      canvas
+      canvas,
+      powerPreference: "high-performance"
     });
 
     const gl = renderer.gl;
