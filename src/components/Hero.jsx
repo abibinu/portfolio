@@ -9,7 +9,7 @@ const Hero = () => {
       <div className="absolute inset-0 z-0">
         <DarkVeil
           hueShift={0}
-          resolutionScale={0.75}
+          resolutionScale={1}
           speed={1}
         />
       </div>
