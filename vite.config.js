@@ -14,8 +14,6 @@ export default defineConfig({
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],
-          threejs: ['three'],
-          reactthree: ['@react-three/fiber', '@react-three/drei'],
           ui: ['framer-motion', 'lucide-react', 'clsx', 'tailwind-merge'],
         },
       },
