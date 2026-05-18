@@ -3,9 +3,9 @@ import { motion } from 'framer-motion';
 import BlurText from './BlurText';
 
 const techStack = [
-  "React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "Express.js",
-  "PostgreSQL", "MongoDB", "Framer Motion", "Three.js", "AWS", "Docker",
-  "Git", "Python", "GraphQL", "Redis", "Firebase", "Zustand"
+  "React", "Java", "Django", "ML", "Node.js", "Express.js",
+  "PostgreSQL", "MongoDB", "C++", "Three.js", "AWS", "Docker",
+  "Git", "Python", "Firebase", "Flutter"
 ];
 
 const Skills = () => {

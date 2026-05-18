@@ -39,6 +39,33 @@ const projects = [
     tags: ["Python", "Pandas", "Trading API"],
     github: "https://github.com/abibinu/arbix",
     color: "from-orange-600 to-red-700"
+  },
+  {
+    id: "05",
+    type: "Full-Stack Web App",
+    title: "Clinic Management System",
+    description: "A comprehensive digital solution for healthcare facilities, featuring custom dashboards for Administrators, Receptionists, Doctors, Pharmacists, and Lab Technicians.",
+    tags: ["Django", "React", "Tailwind CSS"],
+    github: "https://github.com/abibinu/CMS_PROJECT",
+    color: "from-blue-600 to-cyan-700"
+  },
+  {
+    id: "06",
+    type: "Frontend Web App",
+    title: "Premium Dev Portfolio",
+    description: "A visually stunning developer portfolio with rich glassmorphism styles, smooth motion interactions, canvas animations, and responsive contact systems.",
+    tags: ["React", "Framer Motion", "Tailwind CSS", "Vite"],
+    github: "https://github.com/abibinu/portfolio",
+    color: "from-purple-600 to-indigo-700"
+  },
+  {
+    id: "07",
+    type: "System Application",
+    title: "Bus Reservation System",
+    description: "A high-performance console application built purely in C for scheduling, seat selection, and transit booking. Utilizes customized file structures for reliable data storage.",
+    tags: ["C", "File Handling", "Data Structures"],
+    github: "https://github.com/abibinu/Bus_Reservation_System",
+    color: "from-emerald-600 to-green-700"
   }
 ];
 

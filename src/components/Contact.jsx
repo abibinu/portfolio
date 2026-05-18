@@ -179,7 +179,7 @@ const Contact = () => {
           <div className="flex gap-12">
             <a href="#home" className="hover:text-white transition-colors">Home</a>
             <a href="#about" className="hover:text-white transition-colors">About</a>
-            <a href="#work" className="hover:text-white transition-colors">Work</a>
+            <a href="#projects" className="hover:text-white transition-colors">Work</a>
             <a href="https://github.com/abibinu" className="hover:text-white transition-colors">Github</a>
           </div>
         </div>

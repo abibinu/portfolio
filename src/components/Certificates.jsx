@@ -27,6 +27,30 @@ const certificates = [
     issuer: "IBM",
     link: "https://coursera.org/share/4d1023f4121b7acbe26986b42418c04b",
     platform: "Coursera"
+  },
+  {
+    title: "Python for Data Science",
+    issuer: "IIT Madras",
+    link: "https://drive.google.com/file/d/1jIzg4Z9O9N3RtduPMy3Z1F49o-s6fkcr/view?usp=sharing",
+    platform: "NPTEL"
+  },
+  {
+    title: "UNXT Soft Skill Development Program",
+    issuer: "SGBS Unnati Foundation",
+    link: "https://drive.google.com/file/d/1Z3tEW_o44VKPW5gvBmitq1wtXELa8AxJ/view?usp=drive_link",
+    platform: "Unnati"
+  },
+  {
+    title: "Dreamvestor 2.0 Grand Finale Finalist",
+    issuer: "ASAP Kerala & KSIDC",
+    link: "https://drive.google.com/file/d/1gNevugKs8sqXrYWabcH1Q25zCNAOuGNW/view?usp=sharing",
+    platform: "ASAP Kerala"
+  },
+  {
+    title: "Industrial Training: Django Web Development",
+    issuer: "Faith InfoTech, Technopark",
+    link: "#",
+    platform: "Faith InfoTech"
   }
 ];
 
@@ -67,15 +91,21 @@ const Certificates = () => {
                 <h4 className="text-2xl font-bold mb-2 leading-tight">{cert.title}</h4>
                 <p className="text-gray-400 mb-6">{cert.issuer} • {cert.platform}</p>
               </div>
-              <a
-                href={cert.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-blue-400 font-bold hover:text-blue-300 transition-colors w-fit group/link"
-              >
-                View Certificate
-                <ExternalLink size={18} className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
-              </a>
+              {cert.link && cert.link !== "#" && cert.link !== "" ? (
+                <a
+                  href={cert.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-blue-400 font-bold hover:text-blue-300 transition-colors w-fit group/link"
+                >
+                  View Certificate
+                  <ExternalLink size={18} className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
+                </a>
+              ) : (
+                <span className="text-gray-500 font-medium text-sm">
+                  Verification Link Coming Soon
+                </span>
+              )}
             </motion.div>
           ))}
         </div>
