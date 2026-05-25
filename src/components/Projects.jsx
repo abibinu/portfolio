@@ -132,7 +132,7 @@ const ProjectCard = ({ project }) => {
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-32 px-4 bg-black">
+    <section id="projects" className="py-32 px-4 bg-black section-optimize">
       <div className="max-w-7xl mx-auto">
         <div className="mb-24">
           <motion.h2

@@ -36,3 +36,37 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+@keyframes marquee-forward {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes marquee-backward {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+.animate-marquee-forward {
+  animation: marquee-forward 30s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-backward {
+  animation: marquee-backward 40s linear infinite;
+  will-change: transform;
+}
+
+.section-optimize {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 1000px;
+}
+

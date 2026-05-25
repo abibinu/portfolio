@@ -14,7 +14,7 @@ const About = () => {
     },
     {
       title: "Tech Stack",
-      description: "Constantly evolving my toolkit with modern frameworks like React, Next.js, and Node.js.",
+      description: "Building scalable full-stack applications utilizing C#, ASP.NET Core, React, and modern database engines.",
       icon: <Cpu className="text-purple-400" size={32} />,
       className: "md:col-span-1 md:row-span-2",
       bg: "bg-purple-500/5"
@@ -36,7 +36,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-32 px-4 relative overflow-hidden">
+    <section id="about" className="py-32 px-4 relative overflow-hidden section-optimize">
       <div className="max-w-7xl mx-auto">
         <div className="mb-20">
           <motion.h2

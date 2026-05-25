@@ -56,7 +56,7 @@ const certificates = [
 
 const Certificates = () => {
   return (
-    <section id="certificates" className="py-32 px-4 relative overflow-hidden bg-black">
+    <section id="certificates" className="py-32 px-4 relative overflow-hidden bg-black section-optimize">
       <div className="max-w-7xl mx-auto">
         <div className="mb-20">
           <motion.h2

@@ -55,7 +55,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-32 px-4 bg-black overflow-hidden">
+    <section id="contact" className="py-32 px-4 bg-black overflow-hidden section-optimize">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-20">
           {/* Text Side */}

@@ -3,16 +3,16 @@ import { motion } from 'framer-motion';
 import BlurText from './BlurText';
 
 const techStack = [
-  "React", "Java", "Django", "ML", "Node.js", "Express.js",
-  "PostgreSQL", "MongoDB", "C++", "Three.js", "AWS", "Docker",
-  "Git", "Python", "Firebase", "Flutter"
+  "React", "C#", ".NET", "ASP.NET Core", "Java", "Django", "ML", "Node.js", "Express.js",
+  "PostgreSQL", "MongoDB", "C++", "AWS", "Docker",
+  "Git", "Python", "Flutter"
 ];
 
 const Skills = () => {
   const sectionRef = useRef(null);
 
   return (
-    <section id="skills" ref={sectionRef} className="py-12 overflow-hidden bg-black relative">
+    <section id="skills" ref={sectionRef} className="py-12 overflow-hidden bg-black relative section-optimize">
       <div className="max-w-7xl mx-auto px-4 mb-16 relative z-10">
         <motion.h2
           initial={{ opacity: 0, x: -20 }}
@@ -36,42 +36,32 @@ const Skills = () => {
       <div className="flex flex-col gap-8 relative z-10">
         {/* Marquee 1 */}
         <div className="flex whitespace-nowrap overflow-hidden py-4 border-y border-white/5">
-          <motion.div
-            initial={{ x: 0 }}
-            animate={{ x: "-50%" }}
-            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-            className="flex gap-12 items-center text-5xl md:text-7xl font-black uppercase text-white/10"
-          >
+          <div className="flex gap-12 items-center text-5xl md:text-7xl font-black uppercase text-white/10 animate-marquee-forward">
             {Array(4).fill(techStack).flat().map((tech, i) => (
               <span key={i} className="hover:text-blue-500 transition-colors cursor-default">
                 {tech}
               </span>
             ))}
-          </motion.div>
+          </div>
         </div>
 
         {/* Marquee 2 - Reverse */}
         <div className="flex whitespace-nowrap overflow-hidden py-4">
-          <motion.div
-            initial={{ x: "-50%" }}
-            animate={{ x: 0 }}
-            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-            className="flex gap-12 items-center text-5xl md:text-7xl font-black uppercase text-white/20"
-          >
+          <div className="flex gap-12 items-center text-5xl md:text-7xl font-black uppercase text-white/20 animate-marquee-backward">
             {[...Array(4)].fill([...techStack].reverse()).flat().map((tech, i) => (
               <span key={i} className="hover:text-purple-500 transition-colors cursor-default">
                 {tech}
               </span>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 mt-20 grid md:grid-cols-3 gap-12 relative z-10">
         {[
-          { title: "Front-end", desc: "Crafting immersive user interfaces with React, Next.js, and advanced CSS techniques. I focus on performance, accessibility, and smooth interactions." },
-          { title: "Back-end", desc: "Building robust server-side logic and scalable database architectures using Node.js, Python, and various SQL/NoSQL databases." },
-          { title: "DevOps & More", desc: "Ensuring seamless deployment and reliability through Docker, AWS, and CI/CD pipelines. I value clean code and efficient workflows." }
+          { title: "Front-end Development", desc: "Designing and implementing responsive, user-centric web interfaces using React, Next.js, and modern CSS. Focused on core web vitals, accessible design, and fluid transitions." },
+          { title: "Back-end Engineering", desc: "Developing enterprise-grade backends, robust Web APIs, and secure microservices using ASP.NET Core (C#), Node.js, and Python. Proficient in relational and document databases." },
+          { title: "DevOps & Architecture", desc: "Optimizing delivery pipelines and cloud systems utilizing Docker, AWS, CI/CD, and Git. Prioritizing scalable architectures, robust data modeling, and clean code standards." }
         ].map((item, i) => (
           <motion.div
             key={i}

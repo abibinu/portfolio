@@ -1,9 +1,7 @@
-import React, { Suspense, lazy, useState, useEffect } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import React, { Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Background from './components/Background';
-import LoadingScreen from './components/LoadingScreen';
 
 const About = lazy(() => import('./components/About'));
 const Skills = lazy(() => import('./components/Skills'));
@@ -12,24 +10,8 @@ const Projects = lazy(() => import('./components/Projects'));
 const Contact = lazy(() => import('./components/Contact'));
 
 function App() {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Artificial delay to ensure a smooth transition
-    // and wait for everything to mount properly.
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <div className="relative text-white">
-      <AnimatePresence>
-        {loading && <LoadingScreen key="loader" />}
-      </AnimatePresence>
-
       <Background />
       <Navbar />
       <main>
