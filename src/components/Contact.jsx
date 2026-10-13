@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Loader2, Mail, MapPin, Github, Linkedin } from 'lucide-react';
+import { Send, Loader2, Mail, MapPin, Phone, Github, Linkedin, MessageSquare, Copy, Check, Sparkles, Download, ArrowUpRight } from 'lucide-react';
+import BlurText from './BlurText';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +11,21 @@ const Contact = () => {
     message: ''
   });
   const [status, setStatus] = useState('idle');
+  const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState(false);
+
+  const resumeUrl = `${import.meta.env.BASE_URL}assets/Abi_Binu_SoftwareDeveloper.pdf`;
+
+  const copyToClipboard = (text, type) => {
+    navigator.clipboard.writeText(text);
+    if (type === 'email') {
+      setCopiedEmail(true);
+      setTimeout(() => setCopiedEmail(false), 2500);
+    } else {
+      setCopiedPhone(true);
+      setTimeout(() => setCopiedPhone(false), 2500);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,19 +36,12 @@ const Contact = () => {
 ---------------------------
 👤 Name: ${formData.name}
 📧 Email: ${formData.email}
-📑 Subject: ${formData.subject}
+📑 Subject: ${formData.subject || 'General Inquiry'}
 💬 Message: ${formData.message}
     `.trim();
 
-    const token = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
-    const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
-
-    if (!token || !chatId) {
-      console.error('Telegram credentials not found.');
-      setStatus('error');
-      setTimeout(() => setStatus('idle'), 5000);
-      return;
-    }
+    const token = import.meta.env.VITE_TELEGRAM_BOT_TOKEN || '8611302141:AAEDibBH2XOdozOZOZz8v--aPfaLrwH3MvM';
+    const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID || '6498749733';
 
     try {
       const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
@@ -41,148 +50,312 @@ const Contact = () => {
         body: JSON.stringify({ chat_id: chatId, text: telegramMessage })
       });
 
-      if (response.ok) {
+      const data = await response.json();
+
+      if (response.ok && data.ok) {
         setStatus('success');
         setFormData({ name: '', email: '', subject: '', message: '' });
         setTimeout(() => setStatus('idle'), 5000);
       } else {
-        throw new Error('Failed');
+        console.error('Telegram send failed:', data);
+        throw new Error(data.description || 'Failed');
       }
-    } catch (_error) {
+    } catch (error) {
+      console.error('Submission error:', error);
       setStatus('error');
       setTimeout(() => setStatus('idle'), 5000);
     }
   };
 
   return (
-    <section id="contact" className="py-32 px-4 bg-black overflow-hidden section-optimize">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-20">
-          {/* Text Side */}
-          <div className="space-y-12">
-            <div>
-              <motion.h2
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="text-gray-500 uppercase tracking-widest text-sm font-bold mb-4"
-              >
-                Contact
-              </motion.h2>
-              <motion.h3
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-6xl md:text-8xl font-bold tracking-tighter"
-              >
-                Let's make it<br />
-                <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">happen.</span>
-              </motion.h3>
+    <section id="contact" className="py-28 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden section-optimize">
+      {/* Decorative background glow */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-gradient-to-t from-blue-600/10 via-purple-600/5 to-transparent blur-[140px] pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto relative z-10">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-mono font-semibold uppercase tracking-wider mb-4"
+          >
+            <Sparkles size={13} />
+            <span>Direct Communication</span>
+          </motion.div>
+
+          <BlurText
+            text="Let's Build Something Exceptional Together"
+            tag="h2"
+            className="text-3xl sm:text-5xl font-black tracking-tight text-white mb-4 justify-center"
+            animateBy="words"
+            delay={60}
+          />
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.15 }}
+            className="text-zinc-400 text-base sm:text-lg"
+          >
+            Whether you have an engineering role, a software consultation, or an ambitious project, my inbox and phone are always open.
+          </motion.p>
+        </div>
+
+        {/* Contact Layout */}
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          
+          {/* Left Column: Direct Info Cards */}
+          <div className="lg:col-span-5 space-y-6">
+            
+            {/* Email Card */}
+            <div className="p-6 rounded-3xl bg-zinc-950/80 border border-white/10 hover:border-blue-500/30 backdrop-blur-xl transition-all group">
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="p-3.5 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-400 group-hover:scale-110 transition-transform">
+                    <Mail size={22} />
+                  </div>
+                  <div>
+                    <span className="text-[10px] uppercase font-mono tracking-widest text-zinc-500 block mb-1">
+                      Email Address
+                    </span>
+                    <a
+                      href="mailto:abibinuofficial@gmail.com"
+                      className="text-base sm:text-lg font-bold text-white hover:text-blue-400 transition-colors"
+                    >
+                      abibinuofficial@gmail.com
+                    </a>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => copyToClipboard('abibinuofficial@gmail.com', 'email')}
+                  className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition-colors"
+                  title="Copy email to clipboard"
+                  aria-label="Copy email"
+                >
+                  {copiedEmail ? <Check size={16} className="text-emerald-400" /> : <Copy size={16} />}
+                </button>
+              </div>
             </div>
 
-            <div className="space-y-6">
-              <div className="flex items-center gap-6 group">
-                <div className="p-4 bg-white/5 border border-white/10 rounded-2xl group-hover:bg-blue-500/10 group-hover:border-blue-500/50 transition-all duration-500">
-                  <Mail className="text-blue-500" />
+            {/* Phone Card */}
+            <div className="p-6 rounded-3xl bg-zinc-950/80 border border-white/10 hover:border-purple-500/30 backdrop-blur-xl transition-all group">
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="p-3.5 rounded-2xl bg-purple-500/10 border border-purple-500/20 text-purple-400 group-hover:scale-110 transition-transform">
+                    <Phone size={22} />
+                  </div>
+                  <div>
+                    <span className="text-[10px] uppercase font-mono tracking-widest text-zinc-500 block mb-1">
+                      Phone / WhatsApp
+                    </span>
+                    <a
+                      href="tel:+918590657748"
+                      className="text-base sm:text-lg font-bold text-white hover:text-purple-400 transition-colors"
+                    >
+                      +91 85906 57748
+                    </a>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-gray-500 text-[10px] font-bold uppercase tracking-[0.2em] mb-1">Email Me</p>
-                  <p className="text-xl font-medium tracking-tight">abibinuofficial@gmail.com</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-6 group">
-                <div className="p-4 bg-white/5 border border-white/10 rounded-2xl group-hover:bg-purple-500/10 group-hover:border-purple-500/50 transition-all duration-500">
-                  <MapPin className="text-purple-500" />
-                </div>
-                <div>
-                  <p className="text-gray-500 text-[10px] font-bold uppercase tracking-[0.2em] mb-1">Location</p>
-                  <p className="text-xl font-medium tracking-tight">Kerala, India</p>
+
+                <div className="flex items-center gap-1.5">
+                  <button
+                    onClick={() => copyToClipboard('+918590657748', 'phone')}
+                    className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition-colors"
+                    title="Copy phone number"
+                    aria-label="Copy phone"
+                  >
+                    {copiedPhone ? <Check size={16} className="text-emerald-400" /> : <Copy size={16} />}
+                  </button>
+                  <a
+                    href="https://wa.me/918590657748"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2.5 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/20 transition-colors text-xs font-bold"
+                    title="Chat on WhatsApp"
+                  >
+                    WhatsApp
+                  </a>
                 </div>
               </div>
             </div>
 
-            <div className="flex gap-4 pt-4">
-              <a href="https://github.com/abibinu" className="p-4 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300">
-                <Github size={20} />
+            {/* Location Card */}
+            <div className="p-6 rounded-3xl bg-zinc-950/80 border border-white/10 backdrop-blur-xl flex items-center gap-4">
+              <div className="p-3.5 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400">
+                <MapPin size={22} />
+              </div>
+              <div>
+                <span className="text-[10px] uppercase font-mono tracking-widest text-zinc-500 block mb-1">
+                  Location
+                </span>
+                <p className="text-base sm:text-lg font-bold text-white">
+                  Keralam, India
+                </p>
+                <p className="text-xs text-zinc-400 font-mono">
+                  Available for Remote & Relocation
+                </p>
+              </div>
+            </div>
+
+            {/* Social Links Row */}
+            <div className="pt-2 flex items-center gap-3">
+              <a
+                href="https://github.com/abibinu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-zinc-900 border border-white/10 hover:border-white/20 text-zinc-300 hover:text-white transition-all text-xs font-bold"
+              >
+                <Github size={16} />
+                <span>GitHub</span>
               </a>
-              <a href="https://linkedin.com/in/abi-binu-821560340/" className="p-4 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300">
-                <Linkedin size={20} />
+              <a
+                href="https://linkedin.com/in/abi-binu-821560340/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-zinc-900 border border-white/10 hover:border-white/20 text-zinc-300 hover:text-white transition-all text-xs font-bold"
+              >
+                <Linkedin size={16} />
+                <span>LinkedIn</span>
+              </a>
+              <a
+                href={resumeUrl}
+                download="Abi_Binu_SoftwareDeveloper.pdf"
+                className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-blue-600/20 border border-blue-500/30 text-blue-300 hover:bg-blue-600/30 transition-all text-xs font-bold"
+              >
+                <Download size={14} />
+                <span>Resume</span>
               </a>
             </div>
+
           </div>
 
-          {/* Form Side */}
+          {/* Right Column: Contact Form */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="p-8 md:p-12 bg-white/[0.03] border border-white/10 rounded-[2.5rem] backdrop-blur-xl relative overflow-hidden group"
+            className="lg:col-span-7 p-8 sm:p-10 rounded-[2.5rem] bg-zinc-950/90 border border-white/10 backdrop-blur-2xl shadow-2xl relative overflow-hidden"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-
-            <form onSubmit={handleSubmit} className="relative z-10 space-y-8">
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="space-y-3">
-                  <label className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] ml-2">Name</label>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-[11px] font-mono uppercase tracking-wider text-zinc-400 font-semibold block">
+                    Your Name *
+                  </label>
                   <input
                     type="text"
                     name="name"
                     required
                     value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    placeholder="John Doe"
-                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 outline-none focus:border-blue-500/50 focus:bg-white/[0.08] transition-all duration-300 placeholder:text-gray-700"
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    placeholder="e.g. Alex Morgan"
+                    className="w-full bg-zinc-900/80 border border-white/10 rounded-2xl px-5 py-3.5 text-white placeholder-zinc-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm transition-all"
                   />
                 </div>
-                <div className="space-y-3">
-                  <label className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] ml-2">Email</label>
+
+                <div className="space-y-2">
+                  <label className="text-[11px] font-mono uppercase tracking-wider text-zinc-400 font-semibold block">
+                    Email Address *
+                  </label>
                   <input
                     type="email"
                     name="email"
                     required
                     value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    placeholder="john@example.com"
-                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 outline-none focus:border-blue-500/50 focus:bg-white/[0.08] transition-all duration-300 placeholder:text-gray-700"
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    placeholder="alex@company.com"
+                    className="w-full bg-zinc-900/80 border border-white/10 rounded-2xl px-5 py-3.5 text-white placeholder-zinc-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm transition-all"
                   />
                 </div>
               </div>
-              <div className="space-y-3">
-                <label className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] ml-2">Message</label>
+
+              <div className="space-y-2">
+                <label className="text-[11px] font-mono uppercase tracking-wider text-zinc-400 font-semibold block">
+                  Subject / Topic
+                </label>
+                <input
+                  type="text"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                  placeholder="Project inquiry, Job opportunity, Technical consultation"
+                  className="w-full bg-zinc-900/80 border border-white/10 rounded-2xl px-5 py-3.5 text-white placeholder-zinc-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm transition-all"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-[11px] font-mono uppercase tracking-wider text-zinc-400 font-semibold block">
+                  Your Message *
+                </label>
                 <textarea
                   name="message"
                   required
                   rows="4"
                   value={formData.message}
-                  onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  placeholder="Tell me about your project..."
-                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 outline-none focus:border-blue-500/50 focus:bg-white/[0.08] transition-all duration-300 placeholder:text-gray-700 resize-none"
-                ></textarea>
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  placeholder="Tell me about your team, tech stack, or project goals..."
+                  className="w-full bg-zinc-900/80 border border-white/10 rounded-2xl px-5 py-3.5 text-white placeholder-zinc-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm transition-all resize-none"
+                />
               </div>
+
               <motion.button
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
                 type="submit"
                 disabled={status === 'loading'}
-                className="w-full py-6 bg-white text-black rounded-2xl font-bold text-sm uppercase tracking-[0.2em] hover:bg-gray-200 transition-all flex items-center justify-center gap-3 disabled:opacity-50"
+                className="w-full py-4 rounded-2xl font-bold text-sm uppercase tracking-wider text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 shadow-xl shadow-blue-500/20 transition-all flex items-center justify-center gap-2.5 disabled:opacity-60"
               >
-                {status === 'loading' ? <Loader2 className="animate-spin" /> : status === 'success' ? 'Sent Successfully' : status === 'error' ? 'Error Sending' : 'Send Message'}
-                {status === 'idle' && <Send size={16} />}
+                {status === 'loading' ? (
+                  <>
+                    <Loader2 size={18} className="animate-spin" />
+                    <span>Transmitting Message...</span>
+                  </>
+                ) : status === 'success' ? (
+                  <>
+                    <Check size={18} className="text-emerald-400" />
+                    <span>Message Dispatched Successfully!</span>
+                  </>
+                ) : status === 'error' ? (
+                  <span>Dispatch Issue — Please Email Directly</span>
+                ) : (
+                  <>
+                    <Send size={16} />
+                    <span>Send Message</span>
+                  </>
+                )}
               </motion.button>
+
             </form>
           </motion.div>
+
         </div>
 
-        {/* Footer */}
-        <div className="mt-40 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8 text-gray-500 text-sm">
-          <p>© {new Date().getFullYear()} Abi Binu. All rights reserved.</p>
-          <div className="flex gap-12">
+        {/* Global Footer */}
+        <footer className="mt-28 pt-10 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 text-zinc-500 text-xs sm:text-sm">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-blue-500" />
+            <p>© {new Date().getFullYear()} Abi Binu. Designed & Engineered with Clean Architecture.</p>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-6">
             <a href="#home" className="hover:text-white transition-colors">Home</a>
             <a href="#about" className="hover:text-white transition-colors">About</a>
-            <a href="#projects" className="hover:text-white transition-colors">Work</a>
-            <a href="https://github.com/abibinu" className="hover:text-white transition-colors">Github</a>
+            <a href="#skills" className="hover:text-white transition-colors">Skills</a>
+            <a href="#journey" className="hover:text-white transition-colors">Journey</a>
+            <a href="#projects" className="hover:text-white transition-colors">Projects</a>
+            <a href={resumeUrl} download="Abi_Binu_SoftwareDeveloper.pdf" className="text-blue-400 hover:text-blue-300 font-semibold transition-colors flex items-center gap-1">
+              <Download size={13} />
+              <span>Resume PDF</span>
+            </a>
           </div>
-        </div>
+        </footer>
+
       </div>
     </section>
   );
