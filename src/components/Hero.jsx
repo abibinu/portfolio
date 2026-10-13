@@ -7,25 +7,16 @@ import BlurText from './BlurText';
 const Hero = () => {
   const resumeUrl = `${import.meta.env.BASE_URL}assets/Abi_Binu_SoftwareDeveloper.pdf`;
   const profileImg = `${import.meta.env.BASE_URL}assets/profile.png`;
-  const [shaderActive, setShaderActive] = React.useState(false);
-
-  React.useEffect(() => {
-    // Delay WebGL shader start so the developer terminal loader is 100% lag-free
-    const timer = setTimeout(() => setShaderActive(true), 2500);
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Background DarkVeil Shader - activated smoothly after loader */}
-      <div className="absolute inset-0 z-0 opacity-75 pointer-events-none transition-opacity duration-1000">
-        {shaderActive && (
-          <DarkVeil
-            hueShift={0}
-            resolutionScale={0.5}
-            speed={0.6}
-          />
-        )}
+      {/* Background DarkVeil Shader */}
+      <div className="absolute inset-0 z-0 opacity-80 pointer-events-none">
+        <DarkVeil
+          hueShift={0}
+          resolutionScale={0.75}
+          speed={0.7}
+        />
       </div>
 
       {/* Atmospheric Overlays */}
