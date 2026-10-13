@@ -21,8 +21,10 @@ const CursorGlow = () => {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    // Track cursor/touch
-    let mouse = { x: -200, y: -200, active: false };
+    // Track cursor/touch & smooth glow fade opacity
+    let mouse = { x: -200, y: -200 };
+    let glowAlpha = 0;
+    let targetGlowAlpha = 0;
     let lastSpawn = { x: 0, y: 0 };
     let particles = [];
     const maxParticles = 70;
@@ -47,28 +49,35 @@ const CursorGlow = () => {
     };
     window.addEventListener('resize', handleResize, { passive: true });
 
-    // Helper to spawn a sparkle
+    // Helper to spawn sparkles widely spread around cursor
     const spawnSparkle = (x, y, count = 1, burst = false) => {
       for (let i = 0; i < count; i++) {
         if (particles.length >= maxParticles) {
-          particles.shift(); // keep particle count bounded for optimal 60fps
+          particles.shift();
         }
 
-        const angle = burst ? Math.random() * Math.PI * 2 : Math.random() * Math.PI * 2;
-        const speed = burst ? Math.random() * 3.5 + 1.2 : Math.random() * 1.2 + 0.3;
+        // Scatter spawn position widely around cursor (up to 55px offset)
+        const scatterDist = burst ? Math.random() * 65 + 10 : Math.random() * 45 + 6;
+        const scatterAngle = Math.random() * Math.PI * 2;
+        const spawnX = x + Math.cos(scatterAngle) * scatterDist;
+        const spawnY = y + Math.sin(scatterAngle) * scatterDist;
+
+        // Dispersion velocity
+        const driftAngle = Math.random() * Math.PI * 2;
+        const speed = burst ? Math.random() * 4.2 + 1.2 : Math.random() * 1.8 + 0.4;
 
         particles.push({
-          x: x + (Math.random() - 0.5) * 8,
-          y: y + (Math.random() - 0.5) * 8,
-          vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed - (burst ? 0 : 0.4), // slight upward float
-          size: Math.random() * 5 + 3,
-          maxLife: burst ? 35 : 28,
+          x: spawnX,
+          y: spawnY,
+          vx: Math.cos(driftAngle) * speed,
+          vy: Math.sin(driftAngle) * speed - (burst ? 0 : 0.35), // gentle float upward
+          size: Math.random() * 5 + 2.5,
+          maxLife: burst ? 42 : 36,
           life: 0,
           rotation: Math.random() * Math.PI,
-          vRot: (Math.random() - 0.5) * 0.15,
+          vRot: (Math.random() - 0.5) * 0.18,
           color: SPARKLE_COLORS[Math.floor(Math.random() * SPARKLE_COLORS.length)],
-          isStar: Math.random() > 0.35 // 65% 4-point stars, 35% glowing circles
+          isStar: Math.random() > 0.3
         });
       }
     };
@@ -77,11 +86,11 @@ const CursorGlow = () => {
     const handleMouseMove = (e) => {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
-      mouse.active = true;
+      targetGlowAlpha = 1;
 
       // Spawn trail if cursor has moved enough distance
       const dist = Math.hypot(mouse.x - lastSpawn.x, mouse.y - lastSpawn.y);
-      if (dist > 18) {
+      if (dist > 16) {
         spawnSparkle(mouse.x, mouse.y, 2, false);
         lastSpawn = { x: mouse.x, y: mouse.y };
       }
@@ -89,11 +98,11 @@ const CursorGlow = () => {
 
     // Desktop: Mouse Click Burst
     const handleMouseDown = (e) => {
-      spawnSparkle(e.clientX, e.clientY, 10, true);
+      spawnSparkle(e.clientX, e.clientY, 12, true);
     };
 
     const handleMouseLeave = () => {
-      mouse.active = false;
+      targetGlowAlpha = 0;
     };
 
     // Mobile: Touch Move & Start
@@ -102,8 +111,8 @@ const CursorGlow = () => {
         const touch = e.touches[0];
         mouse.x = touch.clientX;
         mouse.y = touch.clientY;
-        mouse.active = true;
-        spawnSparkle(touch.clientX, touch.clientY, 8, true);
+        targetGlowAlpha = 1;
+        spawnSparkle(touch.clientX, touch.clientY, 10, true);
         lastSpawn = { x: touch.clientX, y: touch.clientY };
       }
     };
@@ -113,7 +122,7 @@ const CursorGlow = () => {
         const touch = e.touches[0];
         mouse.x = touch.clientX;
         mouse.y = touch.clientY;
-        mouse.active = true;
+        targetGlowAlpha = 1;
 
         const dist = Math.hypot(mouse.x - lastSpawn.x, mouse.y - lastSpawn.y);
         if (dist > 14) {
@@ -124,10 +133,8 @@ const CursorGlow = () => {
     };
 
     const handleTouchEnd = () => {
-      // Fade out pointer tracker smoothly
-      setTimeout(() => {
-        mouse.active = false;
-      }, 300);
+      // Smooth organic fade out when finger is lifted
+      targetGlowAlpha = 0;
     };
 
     // Event listeners
@@ -138,6 +145,7 @@ const CursorGlow = () => {
     window.addEventListener('touchstart', handleTouchStart, { passive: true });
     window.addEventListener('touchmove', handleTouchMove, { passive: true });
     window.addEventListener('touchend', handleTouchEnd, { passive: true });
+    window.addEventListener('touchcancel', handleTouchEnd, { passive: true });
 
     // Draw 4-point Diamond Star
     const drawStar = (x, y, size, rotation, alpha, color) => {
@@ -172,23 +180,27 @@ const CursorGlow = () => {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // 1. Draw smooth cursor neon aura if active
-      if (mouse.active) {
+      // 1. Draw smooth cursor neon aura with smooth fade in and fade out animation
+      const fadeSpeed = targetGlowAlpha > glowAlpha ? 0.16 : 0.035; // responsive touch in, organic lingering fade out
+      glowAlpha += (targetGlowAlpha - glowAlpha) * fadeSpeed;
+
+      if (glowAlpha > 0.005) {
         const grad = ctx.createRadialGradient(
           mouse.x,
           mouse.y,
           0,
           mouse.x,
           mouse.y,
-          180
+          600
         );
-        grad.addColorStop(0, 'rgba(59, 130, 246, 0.12)');
-        grad.addColorStop(0.5, 'rgba(168, 85, 247, 0.05)');
+        grad.addColorStop(0, `rgba(59, 130, 246, ${0.08 * glowAlpha})`);
+        grad.addColorStop(0.4, `rgba(168, 85, 247, ${0.04 * glowAlpha})`);
+        grad.addColorStop(0.8, `rgba(168, 85, 247, ${0.01 * glowAlpha})`);
         grad.addColorStop(1, 'transparent');
 
         ctx.fillStyle = grad;
         ctx.beginPath();
-        ctx.arc(mouse.x, mouse.y, 180, 0, Math.PI * 2);
+        ctx.arc(mouse.x, mouse.y, 600, 0, Math.PI * 2);
         ctx.fill();
       }
 
@@ -223,12 +235,12 @@ const CursorGlow = () => {
         p.x += p.vx;
         p.y += p.vy;
         p.rotation += p.vRot;
-        p.vx *= 0.94; // friction
-        p.vy *= 0.94;
+        p.vx *= 0.95; // gentle friction
+        p.vy *= 0.95;
 
         const progress = p.life / p.maxLife;
         const alpha = 1 - progress;
-        const currentSize = p.size * (1 - progress * 0.4);
+        const currentSize = p.size * (1 - progress * 0.35);
 
         if (p.life >= p.maxLife || currentSize <= 0.5) {
           particles.splice(i, 1);
@@ -264,6 +276,7 @@ const CursorGlow = () => {
       window.removeEventListener('touchstart', handleTouchStart);
       window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchend', handleTouchEnd);
+      window.removeEventListener('touchcancel', handleTouchEnd);
     };
   }, []);
 

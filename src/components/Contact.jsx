@@ -112,19 +112,20 @@ const Contact = () => {
           <div className="lg:col-span-5 space-y-6">
             
             {/* Email Card */}
-            <div className="p-6 rounded-3xl bg-zinc-950/80 border border-white/10 hover:border-blue-500/30 backdrop-blur-xl transition-all group">
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex items-center gap-4">
-                  <div className="p-3.5 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-400 group-hover:scale-110 transition-transform">
-                    <Mail size={22} />
+            <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-zinc-950/80 border border-white/10 hover:border-blue-500/30 backdrop-blur-xl transition-all group">
+              <div className="flex items-center justify-between gap-3 sm:gap-4">
+                <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+                  <div className="p-3 sm:p-3.5 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-400 shrink-0 group-hover:scale-110 transition-transform">
+                    <Mail size={20} className="sm:w-[22px] sm:h-[22px]" />
                   </div>
-                  <div>
-                    <span className="text-[10px] uppercase font-mono tracking-widest text-zinc-500 block mb-1">
+                  <div className="min-w-0">
+                    <span className="text-[10px] uppercase font-mono tracking-widest text-zinc-500 block mb-0.5">
                       Email Address
                     </span>
                     <a
                       href="mailto:abibinuofficial@gmail.com"
-                      className="text-base sm:text-lg font-bold text-white hover:text-blue-400 transition-colors"
+                      className="text-sm sm:text-base md:text-lg font-bold text-white hover:text-blue-400 transition-colors truncate block"
+                      title="abibinuofficial@gmail.com"
                     >
                       abibinuofficial@gmail.com
                     </a>
@@ -133,7 +134,7 @@ const Contact = () => {
 
                 <button
                   onClick={() => copyToClipboard('abibinuofficial@gmail.com', 'email')}
-                  className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition-colors"
+                  className="p-2 sm:p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition-colors shrink-0"
                   title="Copy email to clipboard"
                   aria-label="Copy email"
                 >
@@ -143,29 +144,29 @@ const Contact = () => {
             </div>
 
             {/* Phone Card */}
-            <div className="p-6 rounded-3xl bg-zinc-950/80 border border-white/10 hover:border-purple-500/30 backdrop-blur-xl transition-all group">
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex items-center gap-4">
-                  <div className="p-3.5 rounded-2xl bg-purple-500/10 border border-purple-500/20 text-purple-400 group-hover:scale-110 transition-transform">
-                    <Phone size={22} />
+            <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-zinc-950/80 border border-white/10 hover:border-purple-500/30 backdrop-blur-xl transition-all group">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+                <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+                  <div className="p-3 sm:p-3.5 rounded-2xl bg-purple-500/10 border border-purple-500/20 text-purple-400 shrink-0 group-hover:scale-110 transition-transform">
+                    <Phone size={20} className="sm:w-[22px] sm:h-[22px]" />
                   </div>
-                  <div>
-                    <span className="text-[10px] uppercase font-mono tracking-widest text-zinc-500 block mb-1">
+                  <div className="min-w-0">
+                    <span className="text-[10px] uppercase font-mono tracking-widest text-zinc-500 block mb-0.5">
                       Phone / WhatsApp
                     </span>
                     <a
                       href="tel:+918590657748"
-                      className="text-base sm:text-lg font-bold text-white hover:text-purple-400 transition-colors"
+                      className="text-base sm:text-lg font-bold text-white hover:text-purple-400 transition-colors whitespace-nowrap block"
                     >
                       +91 85906 57748
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-2 self-end sm:self-center shrink-0">
                   <button
                     onClick={() => copyToClipboard('+918590657748', 'phone')}
-                    className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition-colors"
+                    className="p-2 sm:p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition-colors"
                     title="Copy phone number"
                     aria-label="Copy phone"
                   >
@@ -175,60 +176,61 @@ const Contact = () => {
                     href="https://wa.me/918590657748"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2.5 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/20 transition-colors text-xs font-bold"
+                    className="px-3 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/20 transition-colors text-xs font-bold inline-flex items-center gap-1.5"
                     title="Chat on WhatsApp"
                   >
-                    WhatsApp
+                    <MessageSquare size={13} />
+                    <span>WhatsApp</span>
                   </a>
                 </div>
               </div>
             </div>
 
             {/* Location Card */}
-            <div className="p-6 rounded-3xl bg-zinc-950/80 border border-white/10 backdrop-blur-xl flex items-center gap-4">
-              <div className="p-3.5 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400">
-                <MapPin size={22} />
+            <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-zinc-950/80 border border-white/10 backdrop-blur-xl flex items-center gap-3 sm:gap-4">
+              <div className="p-3 sm:p-3.5 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 shrink-0">
+                <MapPin size={20} className="sm:w-[22px] sm:h-[22px]" />
               </div>
-              <div>
-                <span className="text-[10px] uppercase font-mono tracking-widest text-zinc-500 block mb-1">
+              <div className="min-w-0">
+                <span className="text-[10px] uppercase font-mono tracking-widest text-zinc-500 block mb-0.5">
                   Location
                 </span>
                 <p className="text-base sm:text-lg font-bold text-white">
                   Keralam, India
                 </p>
-                <p className="text-xs text-zinc-400 font-mono">
+                <p className="text-xs text-zinc-400 font-mono truncate">
                   Available for Remote & Relocation
                 </p>
               </div>
             </div>
 
             {/* Social Links Row */}
-            <div className="pt-2 flex items-center gap-3">
+            <div className="pt-2 grid grid-cols-3 gap-2 sm:gap-3">
               <a
                 href="https://github.com/abibinu"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-zinc-900 border border-white/10 hover:border-white/20 text-zinc-300 hover:text-white transition-all text-xs font-bold"
+                className="flex items-center justify-center gap-1.5 sm:gap-2 py-2.5 sm:py-3 px-2 sm:px-4 rounded-xl sm:rounded-2xl bg-zinc-900 border border-white/10 hover:border-white/20 text-zinc-300 hover:text-white transition-all text-xs font-bold min-w-0"
               >
-                <Github size={16} />
-                <span>GitHub</span>
+                <Github size={15} className="shrink-0" />
+                <span className="truncate">GitHub</span>
               </a>
               <a
                 href="https://linkedin.com/in/abi-binu-821560340/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-zinc-900 border border-white/10 hover:border-white/20 text-zinc-300 hover:text-white transition-all text-xs font-bold"
+                className="flex items-center justify-center gap-1.5 sm:gap-2 py-2.5 sm:py-3 px-2 sm:px-4 rounded-xl sm:rounded-2xl bg-zinc-900 border border-white/10 hover:border-white/20 text-zinc-300 hover:text-white transition-all text-xs font-bold min-w-0"
               >
-                <Linkedin size={16} />
-                <span>LinkedIn</span>
+                <Linkedin size={15} className="shrink-0" />
+                <span className="truncate">LinkedIn</span>
               </a>
               <a
                 href={resumeUrl}
                 download="Abi_Binu_SoftwareDeveloper.pdf"
-                className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-blue-600/20 border border-blue-500/30 text-blue-300 hover:bg-blue-600/30 transition-all text-xs font-bold"
+                className="flex items-center justify-center gap-1.5 sm:gap-2 py-2.5 sm:py-3 px-2 sm:px-4 rounded-xl sm:rounded-2xl bg-blue-600/20 border border-blue-500/30 text-blue-300 hover:bg-blue-600/30 transition-all text-xs font-bold min-w-0"
               >
-                <Download size={14} />
-                <span>Resume</span>
+                <Download size={14} className="shrink-0" />
+                <span className="truncate">Resume</span>
               </a>
             </div>
 
@@ -239,7 +241,7 @@ const Contact = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-7 p-8 sm:p-10 rounded-[2.5rem] bg-zinc-950/90 border border-white/10 backdrop-blur-2xl shadow-2xl relative overflow-hidden"
+            className="lg:col-span-7 p-5 sm:p-8 md:p-10 rounded-2xl sm:rounded-[2.5rem] bg-zinc-950/90 border border-white/10 backdrop-blur-2xl shadow-2xl relative overflow-hidden"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               

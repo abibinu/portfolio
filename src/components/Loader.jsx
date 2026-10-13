@@ -74,41 +74,41 @@ const Loader = ({ finishLoading }) => {
       <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-25 pointer-events-none" />
 
       {/* Main Terminal Window with STRICT FIXED dimensions */}
-      <div className="relative w-full max-w-2xl h-[380px] sm:h-[410px] bg-[#0c0d14] border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col will-change-transform">
+      <div className="relative w-full max-w-[94vw] sm:max-w-2xl h-[390px] sm:h-[410px] bg-[#0c0d14] border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col will-change-transform">
         
         {/* Terminal Header Bar */}
-        <div className="h-11 px-4 py-2.5 bg-[#13141f] border-b border-zinc-800 flex items-center justify-between shrink-0">
+        <div className="h-11 px-3 sm:px-4 py-2 bg-[#13141f] border-b border-zinc-800 flex items-center justify-between gap-2 shrink-0">
           {/* macOS window controls */}
-          <div className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full bg-[#ff5f56] inline-block shadow-sm" />
-            <span className="w-3 h-3 rounded-full bg-[#ffbd2e] inline-block shadow-sm" />
-            <span className="w-3 h-3 rounded-full bg-[#27c93f] inline-block shadow-sm" />
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+            <span className="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-[#ff5f56] inline-block shadow-sm" />
+            <span className="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-[#ffbd2e] inline-block shadow-sm" />
+            <span className="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-[#27c93f] inline-block shadow-sm" />
           </div>
 
           {/* Window Title */}
-          <div className="flex items-center gap-2 text-xs text-zinc-400 font-semibold tracking-wide">
-            <Terminal size={13} className="text-blue-400" />
-            <span>abi@workstation: ~/portfolio</span>
-            <span className="text-zinc-600">|</span>
-            <span className="text-indigo-400">git:(main) ⚡</span>
+          <div className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs text-zinc-400 font-semibold tracking-wide min-w-0 px-1 truncate">
+            <Terminal size={12} className="text-blue-400 shrink-0" />
+            <span className="truncate">abi@workstation: ~/portfolio</span>
+            <span className="text-zinc-600 hidden md:inline">|</span>
+            <span className="text-indigo-400 hidden md:inline whitespace-nowrap">git:(main) ⚡</span>
           </div>
 
           {/* Skip button */}
           <button
             onClick={finishLoading}
-            className="text-[11px] text-zinc-400 hover:text-white transition-colors cursor-pointer px-2.5 py-0.5 rounded bg-zinc-800/80 border border-zinc-700 hover:bg-zinc-700"
+            className="text-[10px] sm:text-[11px] text-zinc-400 hover:text-white transition-colors cursor-pointer px-2 sm:px-2.5 py-0.5 rounded bg-zinc-800/80 border border-zinc-700 hover:bg-zinc-700 shrink-0 whitespace-nowrap"
           >
             Skip →
           </button>
         </div>
 
         {/* Terminal Body with fixed flex layout */}
-        <div className="flex-1 p-5 sm:p-6 flex flex-col justify-between overflow-hidden min-h-0">
+        <div className="flex-1 p-4 sm:p-6 flex flex-col justify-between overflow-hidden min-h-0">
           <div className="flex-1 flex flex-col min-h-0 space-y-2">
             {/* Developer Banner */}
-            <div className="text-zinc-500 text-xs pb-2 border-b border-zinc-800 flex items-center justify-between shrink-0">
-              <span>ABI BINU • FULL-STACK & BACKEND ENGINE</span>
-              <span className="text-emerald-400 flex items-center gap-1">
+            <div className="text-zinc-500 text-[10px] sm:text-xs pb-2 border-b border-zinc-800 flex items-center justify-between gap-2 shrink-0">
+              <span className="truncate">ABI BINU • FULL-STACK & BACKEND ENGINE</span>
+              <span className="text-emerald-400 flex items-center gap-1 shrink-0 text-[10px] sm:text-xs whitespace-nowrap">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 ACTIVE
               </span>
@@ -122,37 +122,37 @@ const Loader = ({ finishLoading }) => {
               {devLogs.slice(0, visibleCount).map((log, idx) => (
                 <div
                   key={idx}
-                  className="flex items-start gap-2 leading-relaxed text-xs sm:text-sm"
+                  className="flex items-start gap-1.5 sm:gap-2 leading-relaxed text-[11px] sm:text-xs md:text-sm break-words"
                 >
                   {log.type === "cmd" && (
-                    <span className="text-zinc-300">
+                    <span className="text-zinc-300 min-w-0">
                       <span className="text-blue-400 font-bold">&gt; </span>
                       {log.text.replace("$ ", "")}
                     </span>
                   )}
                   {log.type === "success" && (
-                    <span className="text-emerald-400 flex items-center gap-1.5">
+                    <span className="text-emerald-400 flex items-center gap-1.5 min-w-0">
                       <CheckCircle2 size={13} className="shrink-0 text-emerald-400" />
-                      <span>{log.text.replace("✔ ", "")}</span>
+                      <span className="truncate sm:whitespace-normal">{log.text.replace("✔ ", "")}</span>
                     </span>
                   )}
                   {log.type === "fun" && (
-                    <span className="text-amber-300 flex items-center gap-1.5 font-medium">
+                    <span className="text-amber-300 flex items-center gap-1.5 font-medium min-w-0">
                       <Coffee size={13} className="shrink-0 text-amber-400" />
-                      <span>{log.text}</span>
+                      <span className="truncate sm:whitespace-normal">{log.text}</span>
                     </span>
                   )}
                   {log.type === "ready" && (
-                    <span className="text-cyan-300 font-bold flex items-center gap-1.5">
+                    <span className="text-cyan-300 font-bold flex items-center gap-1.5 min-w-0">
                       <Zap size={13} className="shrink-0 text-cyan-400" />
-                      <span>{log.text}</span>
+                      <span className="truncate sm:whitespace-normal">{log.text}</span>
                     </span>
                   )}
                 </div>
               ))}
 
               {/* Active blinking prompt line */}
-              <div className="flex items-center gap-1.5 text-zinc-400 pt-1 text-xs sm:text-sm">
+              <div className="flex items-center gap-1.5 text-zinc-400 pt-1 text-[11px] sm:text-xs md:text-sm">
                 <span className="text-blue-400 font-bold">&gt;</span>
                 <span className="text-zinc-500 text-xs">
                   {percent < 100 ? "compiling assets..." : "ready"}
@@ -163,13 +163,13 @@ const Loader = ({ finishLoading }) => {
           </div>
 
           {/* Bottom Progress Bar & Stats - Fixed to bottom */}
-          <div className="pt-3 border-t border-zinc-800 space-y-2 shrink-0">
-            <div className="flex items-center justify-between text-xs font-mono">
-              <span className="text-zinc-400 flex items-center gap-1.5">
-                <Cpu size={12} className="text-purple-400" />
-                <span>BUILDING PRODUCTION ARTIFACTS</span>
+          <div className="pt-2.5 sm:pt-3 border-t border-zinc-800 space-y-1.5 sm:space-y-2 shrink-0">
+            <div className="flex items-center justify-between text-[11px] sm:text-xs font-mono">
+              <span className="text-zinc-400 flex items-center gap-1.5 truncate">
+                <Cpu size={12} className="text-purple-400 shrink-0" />
+                <span className="truncate">BUILDING PRODUCTION ARTIFACTS</span>
               </span>
-              <span className="text-blue-400 font-bold">{percent}%</span>
+              <span className="text-blue-400 font-bold shrink-0 ml-2">{percent}%</span>
             </div>
 
             {/* Glowing Segmented Progress Bar */}
@@ -181,9 +181,9 @@ const Loader = ({ finishLoading }) => {
             </div>
 
             {/* Developer Quote / Easter Egg */}
-            <div className="flex items-center justify-between text-[11px] text-zinc-500 pt-1">
-              <span>// "It works on my machine!" ☕</span>
-              <span className="text-emerald-400/90 font-semibold">0 errors • 0 warnings</span>
+            <div className="flex items-center justify-between text-[10px] sm:text-[11px] text-zinc-500 pt-1 gap-2">
+              <span className="truncate">// "It works on my machine!" ☕</span>
+              <span className="text-emerald-400/90 font-semibold shrink-0 whitespace-nowrap">0 errors • 0 warnings</span>
             </div>
           </div>
         </div>
