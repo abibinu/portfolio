@@ -41,9 +41,9 @@ const ResumeSection = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-left">
                 {[
                   "ATS-Optimized Format",
-                  "Verified Certifications (IBM, Google)",
+                  "Verified Certifications (Microsoft, Google, IIT)",
                   "Clean Architecture & C# (.NET)",
-                  "Enterprise & High-Frequency Projects",
+                  "API Gateways & Enterprise Systems",
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-2 text-xs sm:text-sm text-zinc-300 font-medium">
                     <CheckCircle2 size={16} className="text-emerald-400 shrink-0" />
@@ -77,7 +77,7 @@ const ResumeSection = () => {
               </div>
 
               <p className="text-[11px] font-mono text-zinc-500">
-                Format: PDF • File size: ~276 KB • Last updated: 2026
+                Format: PDF • File size: ~285 KB • Last updated: 2026
               </p>
             </div>
 
@@ -118,7 +118,7 @@ const ResumeSection = () => {
                       Key Proficiencies
                     </span>
                     <div className="flex flex-wrap gap-1">
-                      {["C#", "ASP.NET Core", "React", "Python", "Django", "PostgreSQL", "Clean Arch"].map(t => (
+                      {["C#", ".NET 10", "YARP", "ASP.NET Core", "React", "Python", "PostgreSQL", "Clean Arch"].map(t => (
                         <span key={t} className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[10px] font-mono text-zinc-300">
                           {t}
                         </span>
@@ -137,19 +137,15 @@ const ResumeSection = () => {
                   </div>
                 </div>
 
-                {/* Footer Action */}
-                <div className="pt-4 border-t border-white/10 flex items-center justify-between">
-                  <span className="text-[11px] font-mono text-zinc-500">
+                {/* Card Footer Status */}
+                <div className="pt-4 border-t border-white/10 flex items-center justify-between text-[11px] font-mono">
+                  <span className="text-zinc-500">
                     Abi_Binu_SoftwareDeveloper.pdf
                   </span>
-                  <a
-                    href={resumeUrl}
-                    download="Abi_Binu_SoftwareDeveloper.pdf"
-                    className="p-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white transition-colors"
-                    title="Direct Download"
-                  >
-                    <Download size={14} />
-                  </a>
+                  <span className="text-blue-400 font-semibold flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                    Verified PDF
+                  </span>
                 </div>
               </motion.div>
             </div>

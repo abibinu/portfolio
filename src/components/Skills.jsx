@@ -9,7 +9,10 @@ import {
   Sparkles,
   Cpu,
   Layers,
-  Workflow
+  Workflow,
+  Route,
+  Activity,
+  Network
 } from 'lucide-react';
 import {
   SiDotnet,
@@ -25,7 +28,9 @@ import {
   SiTypescript,
   SiNodedotjs,
   SiTailwindcss,
-  SiRedis
+  SiRedis,
+  SiSqlite,
+  SiDart
 } from 'react-icons/si';
 import { TbBrandCSharp } from 'react-icons/tb';
 import { FaAws } from 'react-icons/fa';
@@ -35,13 +40,14 @@ import BlurText from './BlurText';
 const outsideTrack1 = [
   { name: "C#", icon: TbBrandCSharp, color: "#a855f7", bg: "rgba(168,85,247,0.12)", tag: "Language" },
   { name: "ASP.NET Core", icon: SiDotnet, color: "#818cf8", bg: "rgba(129,140,248,0.12)", tag: "Backend" },
+  { name: "YARP (Proxy)", icon: Route, color: "#38bdf8", bg: "rgba(56,189,248,0.12)", tag: "Networking" },
   { name: "React.js", icon: SiReact, color: "#38bdf8", bg: "rgba(56,189,248,0.12)", tag: "Frontend" },
   { name: "PostgreSQL", icon: SiPostgresql, color: "#60a5fa", bg: "rgba(96,165,250,0.12)", tag: "Database" },
   { name: "Django", icon: SiDjango, color: "#34d399", bg: "rgba(52,211,153,0.12)", tag: "Framework" },
   { name: "Docker", icon: SiDocker, color: "#38bdf8", bg: "rgba(56,189,248,0.12)", tag: "DevOps" },
   { name: "AWS", icon: FaAws, color: "#fb923c", bg: "rgba(251,146,60,0.12)", tag: "Cloud" },
   { name: "Clean Architecture", icon: ShieldCheck, color: "#c084fc", bg: "rgba(192,132,252,0.12)", tag: "Design" },
-  { name: "TypeScript", icon: SiTypescript, color: "#60a5fa", bg: "rgba(96,165,250,0.12)", tag: "Language" },
+  { name: "Microservices", icon: Network, color: "#a78bfa", bg: "rgba(167,139,250,0.12)", tag: "Architecture" },
 ];
 
 // Stream 2: Backward flow
@@ -49,13 +55,13 @@ const outsideTrack2 = [
   { name: "Python", icon: SiPython, color: "#facc15", bg: "rgba(250,204,21,0.12)", tag: "AI / Trading" },
   { name: "Flutter", icon: SiFlutter, color: "#22d3ee", bg: "rgba(34,211,238,0.12)", tag: "Mobile" },
   { name: "Node.js", icon: SiNodedotjs, color: "#4ade80", bg: "rgba(74,222,128,0.12)", tag: "Runtime" },
+  { name: "SQL Server / SQLite", icon: SiSqlite, color: "#60a5fa", bg: "rgba(96,165,250,0.12)", tag: "Database" },
   { name: "MongoDB", icon: SiMongodb, color: "#4ade80", bg: "rgba(74,222,128,0.12)", tag: "NoSQL" },
   { name: "Git & GitHub", icon: SiGit, color: "#f87171", bg: "rgba(248,113,113,0.12)", tag: "VCS" },
+  { name: "Rate Limiting", icon: ShieldCheck, color: "#f43f5e", bg: "rgba(244,63,94,0.12)", tag: "Security" },
+  { name: "Distributed Tracing", icon: Activity, color: "#2dd4bf", bg: "rgba(45,212,191,0.12)", tag: "Observability" },
   { name: "REST APIs", icon: Server, color: "#818cf8", bg: "rgba(129,140,248,0.12)", tag: "Architecture" },
-  { name: "JavaScript", icon: SiJavascript, color: "#fde047", bg: "rgba(253,224,71,0.12)", tag: "ES6+" },
-  { name: "Tailwind CSS", icon: SiTailwindcss, color: "#38bdf8", bg: "rgba(56,189,248,0.12)", tag: "Styling" },
-  { name: "Redis", icon: SiRedis, color: "#ef4444", bg: "rgba(239,68,68,0.12)", tag: "Caching" },
-  { name: "System Design", icon: Workflow, color: "#c084fc", bg: "rgba(192,132,252,0.12)", tag: "Architecture" },
+  { name: "Dart", icon: SiDart, color: "#0284c7", bg: "rgba(2,132,199,0.12)", tag: "Language" },
 ];
 
 const skillCategories = [
@@ -65,9 +71,11 @@ const skillCategories = [
     icon: Server,
     skills: [
       { name: "ASP.NET Core", desc: "Enterprise REST APIs, dependency injection, high-throughput financial backends", level: "Proficient" },
+      { name: "YARP (Reverse Proxy)", desc: "Dynamic routing, edge reverse proxy, load balancing across downstream clusters in .NET 10", level: "Advanced" },
+      { name: "Microservices & Rate Limiting", desc: "Centralized edge JWT validation, fixed-window rate limiting, DDoS mitigation", level: "Core Practice" },
+      { name: "Distributed Tracing", desc: "Dynamic X-Correlation-ID header injection, structured JSON error handling & pipeline resilience", level: "Proficient" },
       { name: "Django", desc: "MVT architecture, ORM optimization, clinic management systems, rapid prototyping", level: "Advanced" },
       { name: "Express.js (Node.js)", desc: "Lightweight, event-driven microservices & authentication layers", level: "Proficient" },
-      { name: "REST API Development", desc: "Strict schema contracts, JWT security, robust error handling & serialization", level: "Primary" },
       { name: "Clean Architecture", desc: "Domain-Driven Design, separation of concerns, testable modular structures", level: "Core Practice" },
     ]
   },
@@ -98,6 +106,7 @@ const skillCategories = [
     icon: Database,
     skills: [
       { name: "PostgreSQL", desc: "Relational modeling, indexing, ACID compliance for financial & clinical apps", level: "Primary" },
+      { name: "SQL Server / SQLite", desc: "Relational schemas, ACID transactions, embedded mobile and local storage", level: "Proficient" },
       { name: "MongoDB", desc: "Document collections, flexible schemas, NoSQL high-speed queries", level: "Proficient" },
       { name: "Docker", desc: "Containerized application environments, reproducible dev and deployment setups", level: "Proficient" },
       { name: "AWS", desc: "Cloud computing infrastructure fundamentals, S3, EC2 hosting", level: "Certified" },

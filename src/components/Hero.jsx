@@ -94,7 +94,7 @@ const Hero = () => {
 
             {/* Resume Summary Text */}
             <p className="text-zinc-400 text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
-              Master of Computer Applications candidate skilled in <span className="text-zinc-200 font-medium">C#, ASP.NET Core, React, Django, Python</span>, and <span className="text-zinc-200 font-medium">PostgreSQL</span>. Building production-grade, maintainable software founded on Clean Architecture—from enterprise financial platforms to high-frequency data engines.
+              Software Developer & MCA candidate skilled in <span className="text-zinc-200 font-medium">C#, ASP.NET Core, YARP, React, Python</span>, and <span className="text-zinc-200 font-medium">PostgreSQL</span>. Building production-ready software grounded in Clean Architecture—from high-throughput API gateways and secure microservices to real-time automated data processing systems.
             </p>
 
             {/* Primary Action Buttons including Resume Download */}

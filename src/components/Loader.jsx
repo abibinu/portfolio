@@ -4,12 +4,12 @@ import { Terminal, Cpu, CheckCircle2, Coffee, Zap } from 'lucide-react';
 
 const devLogs = [
   { text: "$ git checkout main --quiet", type: "cmd" },
+  { text: "$ dotnet run --project ApiGateway.csproj -c Release", type: "cmd" },
+  { text: "✔ YARP reverse proxy & edge rate-limiting active", type: "success" },
   { text: "$ dotnet build AegisTrader.sln -c Release", type: "cmd" },
   { text: "✔ Clean Architecture & SOLID contracts compiled", type: "success" },
   { text: "$ python3 -m arbix.scalper --feed=MetaTrader5", type: "cmd" },
   { text: "✔ Low-latency market streaming engine online", type: "success" },
-  { text: "$ npx vite build --target=production", type: "cmd" },
-  { text: "✔ Hydrating React 19 & WebGL shader pipelines", type: "success" },
   { text: "☕ Injecting caffeine... 0 bugs detected on first build!", type: "fun" },
   { text: "🚀 System ready! Launching Abi Binu's Portfolio...", type: "ready" },
 ];

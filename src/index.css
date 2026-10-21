@@ -169,11 +169,6 @@ html {
   will-change: transform;
 }
 
-.marquee-container:hover .animate-marquee-forward,
-.marquee-container:hover .animate-marquee-backward {
-  animation-play-state: paused;
-}
-
 .section-optimize {
   content-visibility: auto;
   contain-intrinsic-size: auto 1000px;

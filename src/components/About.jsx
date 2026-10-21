@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Download, FileText, Globe, Layers, Cpu, Award, CheckCircle2, Clock, MapPin, Sparkles, Languages } from 'lucide-react';
+import { Layers, Cpu, Award, CheckCircle2, Clock, MapPin, Sparkles, Languages } from 'lucide-react';
 import BlurText from './BlurText';
 
 const About = () => {
-  const resumeUrl = `${import.meta.env.BASE_URL}assets/Abi_Binu_SoftwareDeveloper.pdf`;
-
   // Live Kerala (IST) time
   const [istTime, setIstTime] = useState('');
   useEffect(() => {
@@ -85,11 +83,11 @@ const About = () => {
             </h3>
 
             <p className="text-zinc-300 text-base sm:text-lg leading-relaxed mb-6 font-normal">
-              Software Developer and Master of Computer Applications (MCA) candidate, Dreamvestor 2.0 Grand Finale finalist, with IBM, Google and IIT Madras certifications. Skilled in <span className="text-white font-medium">C#, ASP.NET Core, React, Django, Python and PostgreSQL</span>, with hands-on experience in backend architecture, secure REST APIs, and full-stack application development.
+              Software Developer and Master of Computer Applications (MCA) candidate, Dreamvestor 2.0 Grand Finale finalist, holding <span className="text-white font-medium">Microsoft, Google, and IIT Madras</span> certifications. Skilled in <span className="text-white font-medium">C#, ASP.NET Core, YARP, React, Python, Django, and PostgreSQL</span>, with hands-on experience designing high-throughput API gateways, secure microservices, and full-stack web platforms.
             </p>
 
             <div className="flex flex-wrap gap-2.5 pt-2">
-              {['Clean Architecture', 'REST APIs', 'ASP.NET Core', 'Python & Django', 'PostgreSQL', 'High-Frequency Automation'].map((badge) => (
+              {['Clean Architecture', 'API Gateways & YARP', 'ASP.NET Core', 'Microservices', 'PostgreSQL', 'Distributed Tracing'].map((badge) => (
                 <span
                   key={badge}
                   className="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-medium text-zinc-300"
@@ -100,46 +98,46 @@ const About = () => {
             </div>
           </motion.div>
 
-          {/* Card 2: Download Resume Highlight Box */}
+          {/* Card 2: Technical Philosophy & Domain Focus */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="md:col-span-1 lg:col-span-1 p-8 rounded-3xl bg-gradient-to-b from-blue-900/30 via-zinc-950 to-zinc-950 border border-blue-500/30 backdrop-blur-xl relative flex flex-col justify-between group hover:border-blue-400/50 transition-all duration-300 shadow-xl"
+            className="md:col-span-1 lg:col-span-1 p-8 rounded-3xl bg-zinc-950/80 border border-white/10 backdrop-blur-xl relative flex flex-col justify-between group hover:border-blue-500/30 transition-all duration-300 shadow-xl"
           >
             <div>
               <div className="flex items-center justify-between mb-6">
-                <div className="p-3 rounded-2xl bg-blue-500/20 border border-blue-500/30 text-blue-400">
-                  <FileText size={24} />
+                <div className="p-3 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-400">
+                  <Cpu size={24} />
                 </div>
-                <span className="text-[10px] uppercase font-mono px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold">
-                  PDF Available
+                <span className="text-[10px] uppercase font-mono px-2.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-bold">
+                  Core Focus
                 </span>
               </div>
-              <h4 className="text-xl font-bold text-white mb-2">Official Resume</h4>
+              <h4 className="text-xl font-bold text-white mb-2">Backend & Systems</h4>
               <p className="text-zinc-400 text-xs leading-relaxed mb-6">
-                Download verified resume with complete academic records, enterprise projects, technical skills & certifications.
+                Crafting robust ASP.NET Core services, low-latency Python algorithms, and reliable PostgreSQL databases built for scale and high throughput.
               </p>
             </div>
 
-            <div className="space-y-3">
-              <a
-                href={resumeUrl}
-                download="Abi_Binu_SoftwareDeveloper.pdf"
-                className="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-2xl font-bold text-xs uppercase tracking-wider text-white bg-blue-600 hover:bg-blue-500 shadow-lg shadow-blue-500/25 transition-all duration-300 active:scale-95"
-              >
-                <Download size={15} />
-                Download CV (PDF)
-              </a>
-              <a
-                href={resumeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl text-xs font-semibold text-zinc-400 hover:text-white bg-white/5 hover:bg-white/10 transition-colors"
-              >
-                <span>Preview Online</span>
-              </a>
+            <div className="pt-4 border-t border-white/5 space-y-3">
+              <div>
+                <span className="text-[10px] uppercase font-mono tracking-wider text-zinc-500 block mb-0.5">
+                  Design Standard
+                </span>
+                <p className="text-xs font-mono text-zinc-200 font-medium">
+                  Clean Architecture & SOLID
+                </p>
+              </div>
+              <div>
+                <span className="text-[10px] uppercase font-mono tracking-wider text-zinc-500 block mb-0.5">
+                  Core Technologies
+                </span>
+                <p className="text-xs font-mono text-blue-400 font-medium">
+                  C# (.NET 10) • Python • PostgreSQL
+                </p>
+              </div>
             </div>
           </motion.div>
 

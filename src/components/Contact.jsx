@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Loader2, Mail, MapPin, Phone, Github, Linkedin, MessageSquare, Copy, Check, Sparkles, Download, ArrowUpRight } from 'lucide-react';
+import { Send, Loader2, Mail, MapPin, Phone, Github, Linkedin, MessageSquare, Copy, Check, Sparkles, ArrowUpRight } from 'lucide-react';
 import BlurText from './BlurText';
 
 const Contact = () => {
@@ -205,32 +205,24 @@ const Contact = () => {
             </div>
 
             {/* Social Links Row */}
-            <div className="pt-2 grid grid-cols-3 gap-2 sm:gap-3">
+            <div className="pt-2 grid grid-cols-2 gap-3">
               <a
                 href="https://github.com/abibinu"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-1.5 sm:gap-2 py-2.5 sm:py-3 px-2 sm:px-4 rounded-xl sm:rounded-2xl bg-zinc-900 border border-white/10 hover:border-white/20 text-zinc-300 hover:text-white transition-all text-xs font-bold min-w-0"
+                className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl sm:rounded-2xl bg-zinc-900 border border-white/10 hover:border-white/20 text-zinc-300 hover:text-white transition-all text-xs font-bold"
               >
-                <Github size={15} className="shrink-0" />
-                <span className="truncate">GitHub</span>
+                <Github size={16} className="shrink-0" />
+                <span>GitHub</span>
               </a>
               <a
                 href="https://linkedin.com/in/abi-binu-821560340/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-1.5 sm:gap-2 py-2.5 sm:py-3 px-2 sm:px-4 rounded-xl sm:rounded-2xl bg-zinc-900 border border-white/10 hover:border-white/20 text-zinc-300 hover:text-white transition-all text-xs font-bold min-w-0"
+                className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl sm:rounded-2xl bg-zinc-900 border border-white/10 hover:border-white/20 text-zinc-300 hover:text-white transition-all text-xs font-bold"
               >
-                <Linkedin size={15} className="shrink-0" />
-                <span className="truncate">LinkedIn</span>
-              </a>
-              <a
-                href={resumeUrl}
-                download="Abi_Binu_SoftwareDeveloper.pdf"
-                className="flex items-center justify-center gap-1.5 sm:gap-2 py-2.5 sm:py-3 px-2 sm:px-4 rounded-xl sm:rounded-2xl bg-blue-600/20 border border-blue-500/30 text-blue-300 hover:bg-blue-600/30 transition-all text-xs font-bold min-w-0"
-              >
-                <Download size={14} className="shrink-0" />
-                <span className="truncate">Resume</span>
+                <Linkedin size={16} className="shrink-0" />
+                <span>LinkedIn</span>
               </a>
             </div>
 
@@ -351,10 +343,7 @@ const Contact = () => {
             <a href="#skills" className="hover:text-white transition-colors">Skills</a>
             <a href="#journey" className="hover:text-white transition-colors">Journey</a>
             <a href="#projects" className="hover:text-white transition-colors">Projects</a>
-            <a href={resumeUrl} download="Abi_Binu_SoftwareDeveloper.pdf" className="text-blue-400 hover:text-blue-300 font-semibold transition-colors flex items-center gap-1">
-              <Download size={13} />
-              <span>Resume PDF</span>
-            </a>
+            <a href={resumeUrl} download="Abi_Binu_SoftwareDeveloper.pdf" className="hover:text-white transition-colors">Resume</a>
           </div>
         </footer>
 

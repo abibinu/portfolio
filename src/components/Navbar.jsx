@@ -64,16 +64,15 @@ const Navbar = () => {
 
         {/* Action Buttons */}
         <div className="flex items-center gap-2 sm:gap-3">
-          {/* Download Resume Button */}
+          {/* Download Resume Button (Desktop & Tablet) */}
           <a
             href={resumeUrl}
             download="Abi_Binu_SoftwareDeveloper.pdf"
-            className="group relative inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 shadow-md shadow-blue-500/20 hover:shadow-blue-500/40 transition-all duration-300 active:scale-95"
+            className="hidden sm:inline-flex group relative items-center gap-2 px-4 py-2 rounded-full text-xs font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 shadow-md shadow-blue-500/20 hover:shadow-blue-500/40 transition-all duration-300 active:scale-95"
             title="Download Abi Binu's Resume"
           >
             <Download size={14} className="group-hover:translate-y-0.5 transition-transform" />
-            <span className="hidden sm:inline">Resume</span>
-            <span className="sm:hidden">CV</span>
+            <span>Resume</span>
           </a>
 
           {/* Social Icons */}

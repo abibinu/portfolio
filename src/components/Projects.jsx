@@ -8,6 +8,23 @@ const projects = [
     id: "01",
     featured: true,
     category: "enterprise",
+    categoryLabel: "C# • .NET 10 • YARP",
+    title: "Custom Lightweight API Gateway – Reverse Proxy & Traffic Controller",
+    shortDesc: "High-throughput API Gateway using .NET 10 and YARP for dynamic routing, edge JWT security, and rate limiting.",
+    bullets: [
+      "Architected an API Gateway using .NET 10 and YARP to centralize dynamic routing, load balancing, and traffic control across downstream microservice clusters.",
+      "Engineered centralized edge JWT validation and fixed-window rate limiting (System.Threading.RateLimiting) to mitigate unauthorized requests and DDoS traffic.",
+      "Implemented distributed request tracing via dynamic X-Correlation-ID header injection and standardized JSON error handling for pipeline resilience."
+    ],
+    tech: ["C#", ".NET 10", "YARP", "ASP.NET Core", "Rate Limiting", "Distributed Tracing", "JWT"],
+    image: `${import.meta.env.BASE_URL}assets/projects/api-gateway.jpg`,
+    github: "https://github.com/abibinu/api-gateway",
+    color: "from-cyan-500 via-blue-600 to-indigo-600"
+  },
+  {
+    id: "02",
+    featured: true,
+    category: "enterprise",
     categoryLabel: "Enterprise & FinTech",
     title: "AegisTrader – Financial Simulation Platform",
     shortDesc: "Enterprise-grade financial simulation platform built with ASP.NET Core and React.js.",
@@ -22,7 +39,7 @@ const projects = [
     color: "from-blue-600 via-indigo-600 to-cyan-500"
   },
   {
-    id: "02",
+    id: "03",
     featured: true,
     category: "automation",
     categoryLabel: "FinTech & Automation",
@@ -39,7 +56,7 @@ const projects = [
     color: "from-orange-500 via-amber-600 to-red-600"
   },
   {
-    id: "03",
+    id: "04",
     featured: true,
     category: "mobile",
     categoryLabel: "Mobile & Health",
@@ -56,7 +73,7 @@ const projects = [
     color: "from-purple-600 via-pink-600 to-indigo-600"
   },
   {
-    id: "04",
+    id: "05",
     featured: true,
     category: "enterprise",
     categoryLabel: "Industrial Training • Django",
@@ -73,7 +90,7 @@ const projects = [
     color: "from-teal-600 via-emerald-600 to-cyan-700"
   },
   {
-    id: "05",
+    id: "06",
     featured: false,
     category: "mobile",
     categoryLabel: "Full-Stack Web App",
@@ -90,7 +107,7 @@ const projects = [
     color: "from-blue-600 to-indigo-800"
   },
   {
-    id: "06",
+    id: "07",
     featured: false,
     category: "automation",
     categoryLabel: "Machine Learning Solution",
