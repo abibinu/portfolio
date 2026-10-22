@@ -1,5 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 
+const SPARKLE_COLORS = [
+  '#38bdf8', // Cyan
+  '#818cf8', // Indigo
+  '#c084fc', // Purple
+  '#facc15', // Gold
+  '#ffffff', // White
+  '#34d399', // Emerald
+];
+
 const CursorGlow = () => {
   const canvasRef = useRef(null);
 
@@ -16,6 +25,19 @@ const CursorGlow = () => {
     let mouse = { x: -600, y: -600 };
     let glowAlpha = 0;
     let targetGlowAlpha = 0;
+
+    // Ambient floating stardust / particles in the background
+    const ambientStars = Array.from({ length: 18 }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      size: Math.random() * 2.2 + 0.8,
+      baseAlpha: Math.random() * 0.45 + 0.25,
+      pulseSpeed: Math.random() * 0.025 + 0.015,
+      phase: Math.random() * Math.PI * 2,
+      vy: -(Math.random() * 0.4 + 0.15),
+      vx: (Math.random() - 0.5) * 0.18,
+      color: SPARKLE_COLORS[Math.floor(Math.random() * SPARKLE_COLORS.length)]
+    }));
 
     const handleResize = () => {
       width = canvas.width = window.innerWidth;
@@ -70,7 +92,7 @@ const CursorGlow = () => {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Smooth fade-in on touch/move, organic lingering fade-out on release
+      // 1. Draw smooth cursor neon aura (only the glow, no cursor particles)
       const fadeSpeed = targetGlowAlpha > glowAlpha ? 0.16 : 0.035;
       glowAlpha += (targetGlowAlpha - glowAlpha) * fadeSpeed;
 
@@ -92,6 +114,30 @@ const CursorGlow = () => {
         ctx.beginPath();
         ctx.arc(mouse.x, mouse.y, 600, 0, Math.PI * 2);
         ctx.fill();
+      }
+
+      // 2. Render Ambient Floating Particles in Background (Active on Mobile & Desktop)
+      for (let i = 0; i < ambientStars.length; i++) {
+        const s = ambientStars[i];
+        s.y += s.vy;
+        s.x += s.vx;
+        s.phase += s.pulseSpeed;
+
+        // Wrap boundaries smoothly
+        if (s.y < -10) s.y = height + 10;
+        if (s.x < -10) s.x = width + 10;
+        if (s.x > width + 10) s.x = -10;
+
+        const currentAlpha = s.baseAlpha + Math.sin(s.phase) * 0.25;
+        ctx.save();
+        ctx.globalAlpha = Math.max(0.08, Math.min(0.8, currentAlpha));
+        ctx.fillStyle = s.color;
+        ctx.shadowBlur = s.size * 3.5;
+        ctx.shadowColor = s.color;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
       }
 
       animId = requestAnimationFrame(render);

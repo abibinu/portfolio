@@ -121,7 +121,7 @@ const Skills = () => {
   return (
     <section id="skills" className="py-28 bg-black relative overflow-hidden section-optimize">
       {/* Background radial glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-transparent rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[340px] sm:w-[700px] h-[280px] sm:h-[350px] bg-gradient-to-r from-blue-600/25 via-purple-600/20 to-cyan-500/15 rounded-full blur-[65px] sm:blur-[140px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         

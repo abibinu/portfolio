@@ -142,7 +142,7 @@ const Projects = () => {
   return (
     <section id="projects" className="py-28 bg-black relative overflow-hidden section-optimize">
       {/* Ambient background glow */}
-      <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/4 right-0 w-[320px] sm:w-[600px] h-[320px] sm:h-[600px] bg-gradient-to-bl from-blue-600/25 via-indigo-600/20 to-transparent rounded-full blur-[65px] sm:blur-[150px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         

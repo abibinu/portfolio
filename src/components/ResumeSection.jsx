@@ -9,7 +9,7 @@ const ResumeSection = () => {
   return (
     <section className="py-24 bg-gradient-to-b from-black via-zinc-950 to-black relative overflow-hidden section-optimize">
       {/* Decorative gradient bloom */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[350px] bg-gradient-to-r from-blue-600/15 via-purple-600/15 to-cyan-600/10 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[800px] h-[220px] sm:h-[350px] bg-gradient-to-r from-blue-600/25 via-purple-600/25 to-cyan-600/20 rounded-full blur-[65px] sm:blur-[160px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
