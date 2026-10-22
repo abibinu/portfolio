@@ -2,7 +2,7 @@
 
 A modern, high-performance developer portfolio showcasing enterprise backend engineering, clean architecture principles, and full-stack software solutions.
 
-Live Site: https://abibinu.github.io/DemoPortfolio/
+Live Site: https://abibinu.github.io/portfolio/
 
 ## Overview
 
