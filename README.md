@@ -1,102 +1,143 @@
-# Professional Developer Portfolio
+# Abi Binu - Software Developer Portfolio
 
-A highly professional, dark-themed, interactive developer portfolio built with React, Vite, Tailwind CSS, Framer Motion, and Three.js.
+A modern, high-performance developer portfolio showcasing enterprise backend engineering, clean architecture principles, and full-stack software solutions.
 
-## ✨ Features
+Live Site: https://abibinu.github.io/DemoPortfolio/
 
-- **Modern UI**: Dark themed with elegant gradients and smooth animations.
-- **3D Liquid Background**: Custom GLSL "Liquid Ether" shader background for a premium aesthetic.
-- **Interactive Components**: Bento-style grid, scroll-synced 3D Icosahedrons, and dual-layered infinite tech marquees.
-- **Responsive Design**: Fully optimized for mobile, tablet, and desktop.
-- **Project Showcase**: Beautifully cards for your latest work.
-- **Functional Contact Form**: Integrated with Telegram for instant notifications.
+## Overview
 
-## 🚀 Tech Stack
+This portfolio presents the software engineering projects, technical competencies, academic journey, and verified credentials of Abi Binu, a Software Developer and Master of Computer Applications (MCA) candidate. The application is built using React 19, Vite, and Tailwind CSS v4, featuring a custom WebGL shader background, an interactive developer terminal loader, and responsive layouts optimized across mobile, tablet, and desktop devices.
 
-- **React** - Frontend framework
-- **Vite** - Build tool
-- **Tailwind CSS v4** - Styling
-- **Framer Motion** - Animations
-- **Three.js / React Three Fiber** - 3D Graphics
-- **Lucide React** - Icons
+## Key Features
 
-## 🛠️ Setup & Configuration
+- Interactive Developer Terminal Loader: Simulates build steps, compilation logs, and asset hydration with a skip option and persistent progress state.
+- WebGL DarkVeil Shader Background: Hardware-accelerated fluid atmospheric canvas rendered via OGL.
+- Ambient Cursor and Touch Glow: Radial cursor tracking on desktop and smooth fade-in and fade-out touch response on mobile viewports without particle clutter.
+- Outside-to-Outside Skills Streams: Continuous, non-blocking dual-lane marquee displaying language, framework, database, and infrastructure proficiencies without hover pauses.
+- Categorized Skills Inventory: Detailed breakdown spanning Backend Architecture, Core Languages, Frontend/Mobile, and Databases/Cloud DevOps.
+- Comprehensive Project Showcase:
+  - Custom Lightweight API Gateway (C#, .NET 10, YARP, Fixed-Window Rate Limiting, Dynamic X-Correlation-ID Distributed Tracing, Edge JWT Validation)
+  - AegisTrader (ASP.NET Core, React.js, PostgreSQL, Clean Architecture)
+  - m1-ob-scalper (Python, MetaTrader 5 High-Frequency Market Streaming)
+  - Mental Health App (Flutter, Express.js, PostgreSQL)
+  - Clinic Management System (Django, MVT, PostgreSQL, Technopark Industrial Training)
+  - E-Commerce Marketplace (React, MongoDB)
+  - Machine Learning Disease Prediction Pipeline (Python, FastAPI, Scikit-Learn)
+- Experience and Academic Journey: Interactive timeline highlighting MCA post-graduate education, BCA degree, Dreamvestor 2.0 Grand Finale qualification, and industrial training.
+- Verified Credentials: Direct access and verification for Microsoft, Google, IIT Madras, IBM, and conference certifications.
+- Resume Delivery: Integrated PDF preview and download mechanisms linked directly to verified assets with a clean, uncrowded layout.
+- Telegram-Integrated Contact Channel: Direct form dispatch forwarding inbound messages straight to Telegram through secure Bot API endpoints.
 
-### 1. Installation
+## Tech Stack
+
+### Core and Frameworks
+- React 19
+- Vite
+- Tailwind CSS v4
+
+### Graphics and Animation
+- OGL (WebGL Shader Pipeline)
+- Framer Motion
+
+### Icons and Assets
+- Lucide React
+- React Icons (Si, Tb, Fa)
+
+### Tooling and Deployment
+- ESLint
+- GitHub Pages (gh-pages)
+
+## Project Structure
+
+```
+portfolio/
+├── public/
+│   ├── assets/
+│   │   ├── projects/                  # Project screenshots and diagrams
+│   │   ├── certificates/              # Credential documents
+│   │   ├── profile.png                # Profile visual asset
+│   │   └── Abi_Binu_SoftwareDeveloper.pdf # Current resume artifact
+│   └── favicon.svg
+├── src/
+│   ├── components/
+│   │   ├── About.jsx                  # Professional summary and bento grid
+│   │   ├── BlurText.jsx               # Typography word animation component
+│   │   ├── Certificates.jsx           # Credential cards and modal viewers
+│   │   ├── Contact.jsx                # Contact cards and Telegram form
+│   │   ├── CursorGlow.jsx             # Ambient canvas glow controller
+│   │   ├── DarkVeil.jsx               # OGL WebGL shader canvas
+│   │   ├── Hero.jsx                   # Hero section with primary CTAs
+│   │   ├── Journey.jsx                # Educational and milestone timeline
+│   │   ├── Loader.jsx                 # Terminal boot loader
+│   │   ├── Navbar.jsx                 # Responsive navigation bar and drawer
+│   │   ├── Projects.jsx               # Filterable project case studies
+│   │   ├── ResumeSection.jsx          # Resume preview card and download
+│   │   └── Skills.jsx                 # Marquee streams and skills matrix
+│   ├── App.jsx                        # Root application layout
+│   ├── main.jsx                       # Entry point
+│   └── index.css                      # Styling tokens and animations
+├── index.html
+├── package.json
+└── vite.config.js
+```
+
+## Getting Started
+
+### Prerequisites
+- Node.js (v18 or higher recommended)
+- npm (v9 or higher)
+
+### Installation
+
+Clone the repository and install dependencies:
 
 ```bash
+git clone https://github.com/abibinu/portfolio.git
+cd portfolio
 npm install
 ```
 
-### 2. Environment Variables
+### Environment Configuration
 
-To enable the contact form, you need to set up your Telegram bot credentials.
-
-1. Create a `.env` file in the root directory (based on `.env.example`).
-2. Add your Telegram Bot Token and Chat ID:
+To configure the contact form dispatch via Telegram, create a `.env` file in the root directory:
 
 ```env
-VITE_TELEGRAM_BOT_TOKEN=your_bot_token_here
-VITE_TELEGRAM_CHAT_ID=your_chat_id_here
+VITE_TELEGRAM_BOT_TOKEN=your_telegram_bot_token
+VITE_TELEGRAM_CHAT_ID=your_telegram_chat_id
 ```
 
-### 3. Development
+### Local Development
+
+Start the local Vite development server:
 
 ```bash
 npm run dev
 ```
 
-## 🚀 Deployment Guide (Step-by-Step)
+The application will be accessible at http://localhost:5173/.
 
-To get your portfolio live on GitHub Pages, follow these steps:
+### Building for Production
 
-### 1. Create a GitHub Repository
-- Create a new repository on GitHub (e.g., `my-portfolio`).
-- Push this code to the `main` branch of your new repository.
+Compile the production-ready distribution bundle:
 
-### 2. Configure GitHub Pages
-- Go to your repository on GitHub.com.
-- Click on **Settings** (top tab).
-- Click on **Pages** (left sidebar).
-- Under **Build and deployment > Source**, ensure it is set to **"Deploy from a branch"**.
-- Under **Branch**, select `gh-pages` and the folder `/ (root)`. Click **Save**.
-- *Note: The `gh-pages` branch will be created automatically after the first successful build.*
-
-### 3. Setup Contact Form Secrets (Optional)
-If you want the contact form to work in production:
-- Go to **Settings > Secrets and variables > Actions**.
-- Click **New repository secret**.
-- Add `VITE_TELEGRAM_BOT_TOKEN` with your bot token.
-- Add `VITE_TELEGRAM_CHAT_ID` with your chat ID.
-- The GitHub Action will automatically inject these during the build process.
-
-### 4. Automatic Deployment
-Every time you push changes to the `main` branch, the included GitHub Action will:
-1. Install dependencies.
-2. Build the production-ready site.
-3. Deploy it to the `gh-pages` branch.
-
-Your site will be live at: `https://<your-username>.github.io/<your-repo-name>/`
-
----
-
-## 🛠️ Local Development
-
-### 1. Installation
 ```bash
-npm install
+npm run build
 ```
 
-### 2. Run Locally
-```bash
-npm run dev
-```
+The compiled assets will be output to the `dist/` directory.
 
-### 3. Manual Build/Deploy
-If you prefer not to use GitHub Actions, you can deploy manually:
+### Deployment
+
+Deploy the production build to GitHub Pages:
+
 ```bash
 npm run deploy
 ```
 
-## 📝 Note on Security
-Telegram credentials used on the client-side are visible in the network tab. For high-security needs, consider using a dedicated backend or a service like Formspree.
+## Contact
+
+- Developer: Abi Binu
+- Email: abibinuofficial@gmail.com
+- Location: Kerala, India
+- LinkedIn: https://linkedin.com/in/abi-binu-821560340/
+- GitHub: https://github.com/abibinu
