@@ -49,9 +49,9 @@ const experienceData = [
 
 const Journey = () => {
   return (
-    <section id="journey" className="py-28 bg-black/80 relative overflow-hidden section-optimize">
+    <section id="journey" className="py-28 relative overflow-x-clip section-optimize">
       {/* Decorative gradient glow */}
-      <div className="absolute top-1/2 right-10 w-80 h-80 bg-purple-600/10 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/2 right-10 w-72 sm:w-80 h-72 sm:h-80 bg-purple-600/20 rounded-full blur-[65px] sm:blur-[130px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         

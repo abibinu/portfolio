@@ -100,9 +100,9 @@ const certificates = [
 
 const Certificates = () => {
   return (
-    <section id="certificates" className="py-28 bg-black/90 relative overflow-hidden section-optimize">
+    <section id="certificates" className="py-28 relative overflow-x-clip section-optimize">
       {/* Background radial glow */}
-      <div className="absolute top-1/3 left-10 w-96 h-96 bg-amber-500/5 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute top-1/3 left-10 w-72 sm:w-96 h-72 sm:h-96 bg-amber-500/10 rounded-full blur-[65px] sm:blur-[160px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         

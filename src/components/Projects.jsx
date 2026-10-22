@@ -140,7 +140,7 @@ const Projects = () => {
     : projects.filter((p) => p.category === filter);
 
   return (
-    <section id="projects" className="py-28 bg-black relative overflow-hidden section-optimize">
+    <section id="projects" className="py-28 relative overflow-x-clip section-optimize">
       {/* Ambient background glow */}
       <div className="absolute top-1/4 right-0 w-[320px] sm:w-[600px] h-[320px] sm:h-[600px] bg-gradient-to-bl from-blue-600/25 via-indigo-600/20 to-transparent rounded-full blur-[65px] sm:blur-[150px] pointer-events-none" />
 

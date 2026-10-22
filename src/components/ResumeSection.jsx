@@ -7,7 +7,7 @@ const ResumeSection = () => {
   const resumeUrl = `${import.meta.env.BASE_URL}assets/Abi_Binu_SoftwareDeveloper.pdf`;
 
   return (
-    <section className="py-24 bg-gradient-to-b from-black via-zinc-950 to-black relative overflow-hidden section-optimize">
+    <section className="py-24 relative overflow-x-clip section-optimize">
       {/* Decorative gradient bloom */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[800px] h-[220px] sm:h-[350px] bg-gradient-to-r from-blue-600/25 via-purple-600/25 to-cyan-600/20 rounded-full blur-[65px] sm:blur-[160px] pointer-events-none" />
 

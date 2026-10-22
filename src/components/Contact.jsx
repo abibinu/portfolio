@@ -68,7 +68,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-28 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden section-optimize">
+    <section id="contact" className="py-28 px-4 sm:px-6 lg:px-8 relative overflow-x-clip section-optimize">
       {/* Decorative background glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[340px] sm:w-[800px] h-[220px] sm:h-[300px] bg-gradient-to-t from-blue-600/30 via-purple-600/20 to-transparent blur-[65px] sm:blur-[140px] pointer-events-none" />
 

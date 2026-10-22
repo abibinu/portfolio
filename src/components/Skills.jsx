@@ -119,7 +119,7 @@ const Skills = () => {
   const [activeCategory, setActiveCategory] = useState("backend");
 
   return (
-    <section id="skills" className="py-28 bg-black relative overflow-hidden section-optimize">
+    <section id="skills" className="py-28 relative section-optimize">
       {/* Background radial glow */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[340px] sm:w-[700px] h-[280px] sm:h-[350px] bg-gradient-to-r from-blue-600/25 via-purple-600/20 to-cyan-500/15 rounded-full blur-[65px] sm:blur-[140px] pointer-events-none" />
 

@@ -24,7 +24,7 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" className="py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-black/60 section-optimize">
+    <section id="about" className="py-28 px-4 sm:px-6 lg:px-8 relative section-optimize">
       {/* Decorative background glows */}
       <div className="absolute top-1/2 left-0 w-72 sm:w-96 h-72 sm:h-96 bg-blue-600/25 rounded-full blur-[65px] sm:blur-[140px] pointer-events-none" />
       <div className="absolute bottom-10 right-0 w-72 sm:w-96 h-72 sm:h-96 bg-purple-600/25 rounded-full blur-[65px] sm:blur-[140px] pointer-events-none" />
